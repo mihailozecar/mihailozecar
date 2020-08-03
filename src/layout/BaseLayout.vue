@@ -1,21 +1,7 @@
 <template>
   <div class="base-layout container-fluid">
-    <div class="header p-2 d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center">
-        <div class="logo accent-bg p-2">
-          <a href="/" class="no-link">
-            MZ
-          </a>
-        </div>
-        
-        <div class="ml-1">
-          mihailozecar.com
-        </div>
-      </div>
-    </div>
-
-    <div class="sidebar p-2 accent">
-      <div class="text-center">
+    <div class="sidebar p-2">
+      <div class="text-center mz-image-container">
         <img 
           src="@/assets/mz-resized.jpg"
           class="mz-image"
@@ -25,45 +11,35 @@
         >
       </div>
 
-      <hr>
-
       <div>
-        <strong>Name:</strong>
+        <strong class="accent">Name</strong>
       </div>
 
-      <div>
+      <div class="contact-margin">
         Mihailo Zečar
       </div>
 
-      <hr>
-
       <div>
-        <strong>Location:</strong>
+        <strong class="accent">Location</strong>
       </div>
 
-      <div>
-        Belgrade, Serbia
+      <div class="contact-margin">
+        Belgrade, Republic of Serbia
       </div>
       
-      <hr>
-
       <div>
-        <strong>Occupation:</strong>
+        <strong class="accent">Occupation</strong>
+      </div>
+
+      <div class="contact-margin">
+        Full Stack Web Developer
       </div>
 
       <div>
-        Full Stack Web Developer <br> (focus on frontend)
+        <strong class="accent">Contact</strong>
       </div>
 
-      <hr>
-
-      <div>
-        <strong>Contact:</strong>
-      </div>
-
-      <div 
-        class="twitter-link"
-      >
+      <div class="twitter-link contact-margin">
         <a 
           href="https://twitter.com/mihailozecar"
           class="no-link"
@@ -77,10 +53,6 @@
 
     <div class="content">
       <Home></Home>
-    </div>
-
-    <div class="footer px-2 d-flex align-items-center">
-      All rights reserved. {{ new Date().getFullYear() }}
     </div>
   </div>
 </template>
@@ -96,152 +68,45 @@ export default {
 }
 </script>
 
-<style>
-  /* global styles */
-  html,
-  body,
-  #app {
-    color: black;
-    background: #f9f9f9;
-    height: 100%;
-    position: relative;
-
-    font-family: 
-      Roboto,
-      'Open Sans', 
-      'Helvetica Neue', 
-      sans-serif;
-  }
-
-  hr {
-    background-color: #2d005f;
-  }
-
-  a,
-  a:hover {
-    color: blue;
-  }
-
-  .no-link,
-  .no-link:hover {
-    color: inherit;
-    text-decoration: inherit;
-  }
-
-  /* bootstrap-like failover */
-  .d-flex {
-    display: flex;
-  }
-
-  .justify-content-between {
-    justify-content: space-between;
-  }
-
-  .align-items-center {
-    align-items: center;
-  }
-
-  .p-2 {
-    padding: .5rem;
-  }
-
-  .ml-1 {
-    margin-left: .25rem;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .btn {
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    padding: .5rem;
-  }
-
-  .text-right {
-    text-align: right;
-  }
-
-  /* bootstrap-like failover END */
-
-  .accent {
-    color: #2d005f;;
-  }
-
-  .accent-bg {
-    color: white;
-    background-color: #2d005f;;
-  }
-
-  .accent-bg-btn,
-  .accent-bg-btn:hover {
-    color: white;
-    background-color: #2d005f;
-    border-color: #2d005f;
-  }
-
-  .accent-bg-btn:hover,
-  .accent-bg-btn:focus {
-    background-color: rgba(45, 0, 95, .9);
-  }
-</style>
-
 <style scoped>
   .base-layout {
+    position: relative;
     height: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0px;
     display: grid;
     grid-template-columns: 1fr 250px;
-    grid-template-rows: 60px 1fr 40px;
+    grid-template-rows: 1fr;
     grid-template-areas:
-      'header header'
       'content sidebar'
-      'content sidebar'
-      'footer footer';
-  }
-
-  .header {
-    grid-area: header;
-    border-bottom: 2px solid #2d005f;
+      'content sidebar';
   }
 
   .sidebar {
     grid-area: sidebar;
-    border-left: 2px solid #2d005f;
+    /* border-left: 1px solid #2d005f; */
+    overflow: auto;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
 
   .content {
     grid-area: content;
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: white;
+    overflow: auto;
+    padding: 1em;
   }
 
-  .footer {
-    grid-area: footer;
-    border-top: 2px solid #2d005f;
+  .contact-margin {
+    margin-bottom: 1em;
   }
 
   .logo {
     border-radius: 3px;
+  }
+
+  .mz-image-container {
+    border-bottom: 1px solid #2d005f;
+    margin-bottom: .5em;
+    padding-bottom: .5em;
   }
 
   .mz-image {
@@ -257,12 +122,7 @@ export default {
   }
 
   @media screen and (max-width: 992px) {
-    .base-layout {
-      grid-template-columns: 1fr 200px;
-    }
-
     .mz-image {
-      border-radius: 50px;
       width: 100px;
       height: 100px;
     }
@@ -270,16 +130,8 @@ export default {
 
   @media screen and (max-width: 768px) {
     .base-layout {
-      grid-template-columns: 1fr;
-      grid-template-rows: 40px 1fr 40px;
-      grid-template-areas:
-        'header'
-        'content'
-        'footer';
-    }
-
-    .sidebar {
-      display: none;
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: 40px 1fr;
     }
   }
 </style>
