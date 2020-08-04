@@ -5,7 +5,7 @@
     </div>
 
     <div class="sidebar p-2">
-      <div class="text-center mz-image-container">
+      <div class="text-center mz-image-container hide-mobile">
         <img 
           src="@/assets/mz-resized.jpg"
           class="mz-image"
@@ -104,7 +104,7 @@ export default {
   }
 
   .mz-image-container {
-    border-bottom: 1px solid #2d005f;
+    border-bottom: 1px solid rgba(0,0,0,0.23);
     margin-bottom: .5em;
     padding-bottom: .5em;
   }
@@ -114,19 +114,12 @@ export default {
   }
 
   .twitter-link:hover {
-    background-color: rgba(45, 0, 95, .1);
     cursor: pointer;
-    border-radius: 3px;
   }
 
   @media screen and (max-width: 768px) {
     .base-layout {
       display: block;
-    }
-
-     .mz-image {
-      width: 50px;
-      height: 50px;
     }
   }
 </style>

@@ -33,7 +33,7 @@ export default {
   }
 
   hr {
-    background-color: #2d005f;
+    color: rgba(0, 0, 0, 0.23);
   }
 
   a,
@@ -119,5 +119,23 @@ export default {
   .accent-bg-btn:hover,
   .accent-bg-btn:focus {
     background-color: rgba(45, 0, 95, .9);
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: inherit;
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-only {
+      display: block;
+    }
+
+    .hide-mobile {
+      display: none;
+    }
   }
 </style>

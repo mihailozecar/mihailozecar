@@ -147,14 +147,11 @@ export default {
   .mz-image {
     border-radius: 75px;
   }
-
-  .mobile-only {
-    display: none;
-  }
-
+  
   .site-name {
     color: #b3e6c7;
-    font-size: 2rem;
+    font-size: 2em;
+    overflow-wrap: anywhere;
     font-weight: bold;
     text-shadow: 
       1px .5px #00AB44,
@@ -163,11 +160,5 @@ export default {
       2px 2px #00AB44,
       2px 2.5px #00AB44,
       2px 3px #00AB44;
-  }
-
-  @media screen and (max-width: 768px) {
-    .mobile-only {
-      display: block;
-    }
   }
 </style>
