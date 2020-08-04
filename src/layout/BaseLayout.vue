@@ -1,5 +1,9 @@
 <template>
   <div class="base-layout container-fluid">
+    <div class="content">
+      <Home></Home>
+    </div>
+
     <div class="sidebar p-2">
       <div class="text-center mz-image-container">
         <img 
@@ -50,10 +54,6 @@
         </a>
       </div>
     </div>
-
-    <div class="content">
-      <Home></Home>
-    </div>
   </div>
 </template>
 
@@ -83,10 +83,10 @@ export default {
 
   .sidebar {
     grid-area: sidebar;
-    /* border-left: 1px solid #2d005f; */
     overflow: auto;
     background: white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 1.5em;
   }
 
   .content {
@@ -111,8 +111,6 @@ export default {
 
   .mz-image {
     border-radius: 75px;
-    width: 150px;
-    height: 150px;
   }
 
   .twitter-link:hover {
@@ -121,17 +119,14 @@ export default {
     border-radius: 3px;
   }
 
-  @media screen and (max-width: 992px) {
-    .mz-image {
-      width: 100px;
-      height: 100px;
-    }
-  }
-
   @media screen and (max-width: 768px) {
     .base-layout {
-      grid-template-columns: 1fr 200px;
-      grid-template-rows: 40px 1fr;
+      display: block;
+    }
+
+     .mz-image {
+      width: 50px;
+      height: 50px;
     }
   }
 </style>

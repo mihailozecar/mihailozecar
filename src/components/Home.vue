@@ -1,8 +1,22 @@
 <template>
   <div class="home">
+    <div class="site-name">
+      mihailozecar.com
+    </div>
+
     <h1 class="main-header">
       Hello. It's nice to meet you.
     </h1>
+
+    <div class="text-center mz-image-container mobile-only">
+      <img 
+        src="@/assets/mz-resized.jpg"
+        class="mz-image"
+        alt="Mihailo Zecar image"
+        width="150px"
+        height="150px"
+      >
+    </div>
 
     <hr>
 
@@ -128,5 +142,32 @@ export default {
     background: white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     border-radius: 1em;
+  }
+
+  .mz-image {
+    border-radius: 75px;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .site-name {
+    color: #b3e6c7;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 
+      1px .5px #00AB44,
+      1px 1px #00AB44,
+      1px 1.5px #00AB44,
+      2px 2px #00AB44,
+      2px 2.5px #00AB44,
+      2px 3px #00AB44;
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-only {
+      display: block;
+    }
   }
 </style>
