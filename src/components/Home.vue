@@ -66,7 +66,7 @@
 
     <ul>
       <li>
-        Extensive experience with Javascript, combined with other tools, primarily VueJS
+        Extensive experience with Javascript, combined with other tools, such as VueJS and AWS Amplify
       </li>
 
       <li>
