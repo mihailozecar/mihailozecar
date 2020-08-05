@@ -37,7 +37,7 @@
     </h4>
 
     <div>
-      <strong>Esteh, Belgrade (Republic of Serbia)</strong>
+      <strong>Esteh, Belgrade</strong>
       -
       <i class="text-muted">Full Stack Web Developer</i>
       <br>
@@ -52,7 +52,7 @@
       </li>
 
       <li>
-        Building responsive web applications, using best UI/UX practices
+        Building resilient and scalable web applications, using best UI/UX practices
       </li>
 
       <li>
@@ -66,11 +66,11 @@
 
     <ul>
       <li>
-        Extensive experience with Javascript, combined with other tools, such as VueJS and jQuery
+        Extensive experience with Javascript, combined with other tools, primarily VueJS
       </li>
 
       <li>
-        Using Java EE and NodeJS for most of our backend services
+        Using JavaEE and AWS for most of the backend microservices, including serverless technologies
       </li>
 
       <li>
@@ -83,6 +83,16 @@
       
       <li>
         Strong understanding of Data Structures and Algorithms
+      </li>
+    </ul>
+
+    <h4 class="section-header">
+      Certifications
+    </h4>
+
+    <ul>
+      <li>
+        AWS Certified Cloud Practitioner
       </li>
     </ul>
 
