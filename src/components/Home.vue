@@ -152,6 +152,8 @@ export default {
     background: white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     border-radius: 1em;
+    margin-top: 1em;
+    margin-bottom: 2em;
   }
 
   .mz-image {
