@@ -124,5 +124,9 @@ export default {
     .base-layout {
       display: block;
     }
+
+    .sidebar {
+      padding-bottom: 5em;
+    }
   }
 </style>
