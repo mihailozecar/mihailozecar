@@ -10,8 +10,6 @@
           src="@/assets/mz-resized.jpg"
           class="mz-image"
           alt="Mihailo Zecar image"
-          width="150px"
-          height="150px"
         >
       </div>
 
@@ -43,13 +41,24 @@
         <strong class="accent">Contact</strong>
       </div>
 
-      <div class="twitter-link contact-margin">
+      <div class="social-link">
+        <i class="fab fa-linkedin"></i>
+        <a 
+          href="https://www.linkedin.com/in/mihailo-zecar"
+          target="_blank"
+          rel="noopener"
+        >
+          Mihailo Zecar
+        </a>
+      </div>
+
+      <div class="social-link">
+        <i class="fab fa-twitter"></i>
         <a 
           href="https://twitter.com/mihailozecar"
-          class="no-link"
           target="_blank"
+          rel="noopener"
         >
-          <i class="fab fa-twitter"></i>
           @mihailozecar
         </a>
       </div>
@@ -103,17 +112,11 @@ export default {
     border-radius: 3px;
   }
 
-  .mz-image-container {
-    border-bottom: 1px solid rgba(0,0,0,0.23);
-    margin-bottom: .5em;
-    padding-bottom: .5em;
+  .social-link {
+    margin-top: .5em;
   }
 
-  .mz-image {
-    border-radius: 75px;
-  }
-
-  .twitter-link:hover {
+  .social-link:hover {
     cursor: pointer;
   }
 

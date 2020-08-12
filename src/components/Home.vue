@@ -13,8 +13,6 @@
         src="@/assets/mz-resized.jpg"
         class="mz-image"
         alt="Mihailo Zecar image"
-        width="150px"
-        height="150px"
       >
     </div>
 
@@ -46,7 +44,7 @@
       </span>
     </div>
 
-    <ul>
+    <ul class="unordered-list">
       <li>
         Developing Enterprise Sales Management solutions for an in-house product
       </li>
@@ -64,23 +62,19 @@
       Technical skills
     </h4>
 
-    <ul>
+    <ul class="unordered-list">
       <li>
         Extensive experience with Javascript, combined with other tools, such as VueJS and AWS Amplify
       </li>
 
       <li>
-        Using JavaEE and AWS for most of the backend microservices, including serverless technologies
+        Using Java EE and AWS for most of the backend APIs, including serverless technologies (AWS Lambda)
       </li>
 
       <li>
-        MySQL and Redis for all DB requirements
+        Knowledge of relational and non-relational databases (MySQL, DynamoDB, Redis)
       </li>
 
-      <li>
-        Comfortable with Linux/Unix workflow
-      </li>
-      
       <li>
         Strong understanding of Data Structures and Algorithms
       </li>
@@ -90,7 +84,7 @@
       Certifications
     </h4>
 
-    <ul>
+    <ul class="unordered-list">
       <li>
         AWS Certified Cloud Practitioner
       </li>
@@ -100,7 +94,7 @@
       Languages
     </h4>
 
-    <ul>
+    <ul class="unordered-list">
       <li>
         English - Conversation level
       </li>
@@ -137,7 +131,8 @@ export default {
 
 <style scoped>
   .section-header {
-    color: #00AB44;
+    color: var(--green-accent-color);
+    margin-bottom: 0px;
   }
 
   .text-muted {
@@ -155,22 +150,23 @@ export default {
     margin-top: 1em;
     margin-bottom: 2em;
   }
-
-  .mz-image {
-    border-radius: 75px;
-  }
   
   .site-name {
-    color: #b3e6c7;
+    color: var(--light-green-accent-color);
     font-size: 2em;
     overflow-wrap: anywhere;
     font-weight: bold;
     text-shadow: 
-      1px .5px #00AB44,
-      1px 1px #00AB44,
-      1px 1.5px #00AB44,
-      2px 2px #00AB44,
-      2px 2.5px #00AB44,
-      2px 3px #00AB44;
+      1px .5px var(--green-accent-color),
+      1px 1px var(--green-accent-color),
+      1px 1.5px var(--green-accent-color),
+      2px 2px var(--green-accent-color),
+      2px 2.5px var(--green-accent-color),
+      2px 3px var(--green-accent-color);
+  }
+
+  .unordered-list {
+    margin-top: .5em;
+    margin-bottom: .5em;
   }
 </style>

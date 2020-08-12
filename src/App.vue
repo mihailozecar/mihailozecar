@@ -36,15 +36,45 @@ export default {
     color: rgba(0, 0, 0, 0.23);
   }
 
-  a,
-  a:hover {
-    color: blue;
+  :root {
+    --green-accent-color: #008936;
+    --light-green-accent-color: #b3e6c7;
   }
 
-  .no-link,
-  .no-link:hover {
-    color: inherit;
-    text-decoration: inherit;
+  .accent {
+    color: var(--green-accent-color);
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: inherit;
+  }
+
+  .mz-image {
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-only {
+      display: block;
+    }
+
+    .hide-mobile {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .mz-image-container {
+      border-bottom: 1px solid rgba(0,0,0,0.23);
+      margin-bottom: .5em;
+      padding-bottom: .5em;
+    }
   }
 
   /* bootstrap-like failover */
@@ -97,45 +127,5 @@ export default {
   .text-right {
     text-align: right;
   }
-
   /* bootstrap-like failover END */
-
-  .accent {
-    color: #00AB44;
-  }
-
-  .accent-bg {
-    color: white;
-    background-color: #2d005f;
-  }
-
-  .accent-bg-btn,
-  .accent-bg-btn:hover {
-    color: white;
-    background-color: #2d005f;
-    border-color: #2d005f;
-  }
-
-  .accent-bg-btn:hover,
-  .accent-bg-btn:focus {
-    background-color: rgba(45, 0, 95, .9);
-  }
-
-  .mobile-only {
-    display: none;
-  }
-
-  .hide-mobile {
-    display: inherit;
-  }
-
-  @media screen and (max-width: 768px) {
-    .mobile-only {
-      display: block;
-    }
-
-    .hide-mobile {
-      display: none;
-    }
-  }
 </style>
