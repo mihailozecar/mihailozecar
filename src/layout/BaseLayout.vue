@@ -14,7 +14,17 @@
       </div>
 
       <div>
-        <strong class="accent">Name</strong>
+        <strong>
+          Contact
+        </strong>
+      </div>
+
+      <hr>
+
+      <div>
+        <strong class="accent">
+          Name
+        </strong>
       </div>
 
       <div class="contact-margin">
@@ -22,23 +32,19 @@
       </div>
 
       <div>
-        <strong class="accent">Location</strong>
+        <strong class="accent">
+          Location
+        </strong>
       </div>
 
       <div class="contact-margin">
         Belgrade, Republic of Serbia
       </div>
-      
-      <div>
-        <strong class="accent">Occupation</strong>
-      </div>
-
-      <div class="contact-margin">
-        Full Stack Web Developer
-      </div>
 
       <div>
-        <strong class="accent">Contact</strong>
+        <strong class="accent">
+          Social
+        </strong>
       </div>
 
       <div class="social-link">
@@ -114,6 +120,7 @@ export default {
 
   .social-link {
     margin-top: .5em;
+    margin-bottom: 1em;
   }
 
   .social-link:hover {
