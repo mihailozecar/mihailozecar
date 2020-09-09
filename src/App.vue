@@ -24,6 +24,7 @@ export default {
     position: relative;
     padding: 0px;
     margin: 0px;
+    font-display: swap;
 
     font-family: 
       Roboto,
