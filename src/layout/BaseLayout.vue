@@ -10,6 +10,8 @@
           src="mz-resized.jpg"
           class="mz-image"
           alt="Mihailo Zecar image"
+          width="150px"
+          height="150px"
         >
       </div>
 
