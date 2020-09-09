@@ -7,7 +7,7 @@
     <div class="sidebar p-2">
       <div class="text-center mz-image-container hide-mobile">
         <img 
-          src="@/assets/mz-resized.jpg"
+          src="mz-resized.jpg"
           class="mz-image"
           alt="Mihailo Zecar image"
         >
