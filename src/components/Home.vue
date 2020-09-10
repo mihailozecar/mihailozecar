@@ -86,7 +86,7 @@
 
     <ul class="unordered-list">
       <li>
-        AWS Certified Cloud Practitioner
+        AWS Certified Cloud Practitioner (2020)
       </li>
     </ul>
 
@@ -96,7 +96,7 @@
 
     <ul class="unordered-list">
       <li>
-        English - Conversation level
+        English - Conversational level
       </li>
 
       <li>
@@ -104,7 +104,7 @@
       </li>
 
       <li>
-        Serbian - Conversation level
+        Serbian - Conversational level
       </li>
     </ul>
 
