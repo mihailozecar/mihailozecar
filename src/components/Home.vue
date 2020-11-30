@@ -150,20 +150,6 @@ export default {
     margin-top: 1em;
     margin-bottom: 2em;
   }
-  
-  .site-name {
-    color: var(--light-green-accent-color);
-    font-size: 2em;
-    overflow-wrap: anywhere;
-    font-weight: bold;
-    text-shadow: 
-      1px .5px var(--green-accent-color),
-      1px 1px var(--green-accent-color),
-      1px 1.5px var(--green-accent-color),
-      2px 2px var(--green-accent-color),
-      2px 2.5px var(--green-accent-color),
-      2px 3px var(--green-accent-color);
-  }
 
   .unordered-list {
     margin-top: .5em;

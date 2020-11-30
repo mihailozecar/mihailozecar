@@ -34,6 +34,8 @@ export default {
   :root {
     --green-accent-color: #008936;
     --light-green-accent-color: #b3e6c7;
+    --purple-accent-color: #651fff;
+    --light-purple-accent-color: #b388ff;
   }
 
   .accent {
@@ -102,25 +104,36 @@ export default {
     margin-right: auto;
   }
 
-  .btn {
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    padding: .5rem;
-  }
-
   .text-right {
     text-align: right;
   }
   /* bootstrap-like failover END */
+
+  .site-name {
+    color: var(--light-green-accent-color);
+    font-size: 2em;
+    overflow-wrap: anywhere;
+    font-weight: bold;
+    text-shadow: 
+      1px .5px var(--green-accent-color),
+      1px 1px var(--green-accent-color),
+      1px 1.5px var(--green-accent-color),
+      2px 2px var(--green-accent-color),
+      2px 2.5px var(--green-accent-color),
+      2px 3px var(--green-accent-color);
+  }
+
+  .site-name-purple {
+    color: var(--light-purple-accent-color);
+    font-size: 2em;
+    overflow-wrap: anywhere;
+    font-weight: bold;
+    text-shadow: 
+      1px .5px var(--purple-accent-color),
+      1px 1px var(--purple-accent-color),
+      1px 1.5px var(--purple-accent-color),
+      2px 2px var(--purple-accent-color),
+      2px 2.5px var(--purple-accent-color),
+      2px 3px var(--purple-accent-color);
+  }
 </style>
