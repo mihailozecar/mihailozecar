@@ -1,7 +1,7 @@
 <template>
   <div class="base-layout container-fluid">
     <div class="content">
-      <Home></Home>
+      <router-view></router-view>
     </div>
 
     <div class="sidebar p-2">
@@ -75,13 +75,8 @@
 </template>
 
 <script>
-import Home from '@/components/Home.vue'
-
 export default {
-  name: 'BaseLayout',
-  components: {
-    Home
-  }
+  name: 'BaseLayout'
 }
 </script>
 

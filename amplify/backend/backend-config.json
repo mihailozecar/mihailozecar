@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "mihailozecard564b1f9": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
