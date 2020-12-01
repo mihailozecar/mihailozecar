@@ -10,7 +10,7 @@
 export default {
   name: 'DccHome',
   mounted() {
-    // this.apiTest();
+    this.apiTest();
   },
   methods: {
     async apiTest() {
