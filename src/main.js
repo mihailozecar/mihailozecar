@@ -7,6 +7,9 @@ import awsExports from '@/aws-exports.js'
 
 Amplify.configure(awsExports)
 
+import $api from '@/util/api'
+Vue.use($api)
+
 Vue.config.productionTip = false
 
 new Vue({

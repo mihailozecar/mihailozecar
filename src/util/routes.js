@@ -4,6 +4,8 @@ const Home = () => import('@/components/Home.vue')
 const DccLayout = () => import('@/layout/DccLayout.vue')
 const AuthLayout = () => import('@/layout/AuthLayout.vue')
 
+const DccHome = () => import('@/components/DccHome.vue')
+
 const routes = [
   {
     path: '/',
@@ -28,9 +30,20 @@ const routes = [
     path: '/dcc',
     component: DccLayout,
     name: 'dcc',
+    redirect: { name: 'dcc-home' },
     meta: {
       authRequired: true
     },
+    children: [
+      {
+        path: 'home',
+        component: DccHome,
+        name: 'dcc-home',
+        meta: {
+          authRequired: true
+        }
+      }
+    ]
   },
   {
     path: '/auth',

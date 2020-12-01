@@ -4,6 +4,7 @@
     <Button @click="signOut">
       Sign Out
     </Button>
+    <router-view></router-view>
   </div>
 </template>
 
