@@ -27,7 +27,7 @@ async function $post(params = {}, config = {}) {
   const result = await fetch(url, {
     method: 'POST',
     headers: {
-      ContentType: 'application/json',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
     body: JSON.stringify(params)

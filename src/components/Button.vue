@@ -84,7 +84,7 @@ export default {
 
   .btn:active:not(.disabled) { 
     transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.24); 
   }
 
   .btn-default {

@@ -7,27 +7,6 @@
       "customAuth": false
     }
   },
-  "function": {
-    "dailycodingchallengeAPIfunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "api": {
-    "dailycodingchallengewebAPI": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "dailycodingchallengeAPIfunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    }
-  }
+  "function": {},
+  "api": {}
 }
