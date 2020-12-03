@@ -56,6 +56,10 @@ export default {
     height: 150px;
   }
 
+  .d-flex {
+    display: flex;
+  }
+
   @media screen and (max-width: 768px) {
     .mobile-only {
       display: block;
@@ -63,6 +67,10 @@ export default {
 
     .hide-mobile {
       display: none;
+    }
+
+    .d-flex {
+      display: block;
     }
   }
 
@@ -75,8 +83,9 @@ export default {
   }
 
   /* bootstrap-like failover */
-  .d-flex {
-    display: flex;
+
+  .flex-1 {
+    flex: auto;
   }
 
   .justify-content-between {
@@ -106,6 +115,10 @@ export default {
 
   .text-right {
     text-align: right;
+  }
+
+  .w-100 {
+    width: 100%;
   }
   /* bootstrap-like failover END */
 

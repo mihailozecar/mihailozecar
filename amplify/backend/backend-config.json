@@ -7,6 +7,27 @@
       "customAuth": false
     }
   },
-  "function": {},
-  "api": {}
+  "function": {
+    "dailycodingchallengewebAPIfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "api": {
+    "dailycodingchallengewebAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "dailycodingchallengewebAPIfunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
+  }
 }

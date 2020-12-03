@@ -7,7 +7,14 @@ const awsmobile = {
     "aws_cognito_region": "eu-west-1",
     "aws_user_pools_id": "eu-west-1_l2GYA7BKq",
     "aws_user_pools_web_client_id": "4ukai259ni9bi7e4rgntqd1j11",
-    "oauth": {}
+    "oauth": {},
+    "aws_cloud_logic_custom": [
+        {
+            "name": "dailycodingchallengewebAPI",
+            "endpoint": "https://oq2qbtd0e1.execute-api.eu-west-1.amazonaws.com/master",
+            "region": "eu-west-1"
+        }
+    ]
 };
 
 

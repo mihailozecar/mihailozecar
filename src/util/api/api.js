@@ -1,14 +1,7 @@
-import { getUser } from '@/util/auth.js'
+import { API } from 'aws-amplify'
 
 const ApiList = {
   DCC_API: process.env.VUE_APP_DCC_API
-}
-
-async function getAuthToken() {
-  const currentUser = await getUser();
-  const token = currentUser.signInUserSession.idToken.jwtToken;
-
-  return token;
 }
 
 async function $post(params = {}, config = {}) {
@@ -16,21 +9,17 @@ async function $post(params = {}, config = {}) {
     throw { error: 'API missing' };
   }
 
-  let url = ApiList[config.API];
+  let path = '';
 
   if (config.path) {
-    url += config.path;
+    path = config.path;
   }
 
-  const authToken = await getAuthToken();
-
-  const result = await fetch(url, {
-    method: 'POST',
+  const result = await API.post(ApiList[config.API], path, {
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(params)
+    body: params
   });
 
   return result;
