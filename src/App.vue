@@ -100,6 +100,10 @@ export default {
     padding: .5rem;
   }
 
+  .mt-1 {
+    margin-top: .25rem;
+  }
+
   .ml-1 {
     margin-left: .25rem;
   }
@@ -148,5 +152,9 @@ export default {
       2px 2px var(--purple-accent-color),
       2px 2.5px var(--purple-accent-color),
       2px 3px var(--purple-accent-color);
+  }
+
+  .font-weight-bold {
+    font-weight: bold;
   }
 </style>
