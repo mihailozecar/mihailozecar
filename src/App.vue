@@ -60,6 +60,10 @@ export default {
     display: flex;
   }
 
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
   @media screen and (max-width: 768px) {
     .mobile-only {
       display: block;
@@ -67,10 +71,6 @@ export default {
 
     .hide-mobile {
       display: none;
-    }
-
-    .d-flex {
-      display: block;
     }
   }
 
@@ -96,8 +96,22 @@ export default {
     align-items: center;
   }
 
+  .align-items-baseline {
+    align-items: baseline;
+  }
+
   .p-2 {
     padding: .5rem;
+  }
+
+  .py-2 {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  .px-2 {
+    padding-left: .5rem;
+    padding-right: .5rem;
   }
 
   .mt-1 {

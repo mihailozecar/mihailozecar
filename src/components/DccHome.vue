@@ -1,25 +1,21 @@
 <template>
-  <div class="dcc-home p-2">
-    <h3>
-      Problems
-    </h3>
+  <div class="dcc-home px-2">
+    <template v-if="isDccHome">
+      <Button 
+        @click="loadData"
+        :disabled="loadingInProgress"
+        class="m-1-em"
+      >
+        {{
+          loadingInProgress? 'Loading...' : 'Refresh'
+        }}
+      </Button>
 
-    <Button 
-      @click="loadData"
-      :disabled="loadingInProgress"
-    >
-      {{
-        loadingInProgress? 'Loading...' : 'Refresh'
-      }}
-    </Button>
-
-    <div class="d-flex">
-      <div class="flex-1 mt-1 problem-list">
+      <div class="d-flex flex-wrap">
         <div
-          v-for="problem in problemList"
+          v-for="problem in problemListSorted"
           :key="problem.Key"
-          class="list-item"
-          :class="problem.active? 'active' : ''"
+          class="problem"
           @click="selectProblem(problem)"
         >
           <div>
@@ -40,16 +36,17 @@
           </div>
         </div>
       </div>
+    </template>
 
-      <div class="flex-1 preview">
-        <textarea
-          rows="20"
-          class="w-100"
-          readonly
-          :value="problemDetailsFormatted"
-        ></textarea>
-      </div>
-    </div>
+    <template v-else>
+      <Button
+        class="m-1-em"
+        @click="backToDccHome"
+      >
+        Back
+      </Button>
+      <router-view></router-view>
+    </template>
   </div>
 </template>
 
@@ -64,17 +61,15 @@ export default {
   data() {
     return {
       loadingInProgress: false,
-      problemList: [],
-      problemDetails: null
+      problemList: []
     }
   },
   computed: {
-    problemDetailsFormatted() {
-      if (!this.problemDetails) {
-        return null;
-      }
-
-      return JSON.stringify(this.problemDetails, null, 2);
+    problemListSorted() {
+      return [...this.problemList].sort((a,b) => a.num > b.num? -1 : 1);
+    },
+    isDccHome() {
+      return this.$route.name == 'dcc-home';
     }
   },
   mounted() {
@@ -83,7 +78,6 @@ export default {
   methods: {
     resetData() {
       this.problemList = [];
-      this.problemDetails = null;
     },
     loadData() {
       this.resetData();
@@ -114,7 +108,6 @@ export default {
           processedProblems.push(processedProblem);
         }
         
-        processedProblems = processedProblems.sort((a,b) => a.num > b.num? -1 : 1);
         this.problemList = processedProblems;
 
       } catch (error) {
@@ -122,33 +115,11 @@ export default {
         this.loadingInProgress = false;
       }
     },
-    async getProblemDetails(problem) {
-      if (this.loadingInProgress) {
-        return;
-      }
-
-      const params = {};
-      params['action'] = 'get_problem';
-      params['key'] = problem.Key;
-
-      this.loadingInProgress = true;
-      
-      try {
-        const result = await this.$api.$post(params, { API: 'DCC_API', path: '/api' });
-        this.loadingInProgress = false;
-        this.problemDetails = result.data;
-      } catch (error) {
-        console.error(error);
-        this.loadingInProgress = false;
-      }
-    },
     selectProblem(problem) {
-      for (const problem of this.problemList) {
-        problem.active = false;
-      }
-
-      problem.active = true;
-      this.getProblemDetails(problem);
+      this.$router.push({ name: 'problem-details', params: { problemKey: problem.Key } });
+    },
+    backToDccHome() {
+      this.$router.push({ name: 'dcc-home' });
     },
     preprocessProblem(problem) {
       const key = problem.Key;
@@ -174,22 +145,18 @@ export default {
     margin: 1em;
   }
 
-  .list-item {
+  .problem {
     background: white;
-    padding: 1em;
-    border-radius: 5px;
+    padding: 2em;
+    margin: 1em;
+    cursor: pointer;
+    border-radius: 1em;
     box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
-    margin-top: 1em;
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
   }
 
-  .list-item:hover {
+  .problem:hover {
     box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.36);
-  }
-
-  .list-item.active {
-    box-shadow: 3px 2px 10px 0px var(--light-purple-accent-color);
-
   }
 
   .category {
@@ -208,5 +175,9 @@ export default {
   .category.category-hard {
     background: #f55060;
     color: white;
+  }
+
+  .m-1-em {
+    margin: 1em;
   }
 </style>

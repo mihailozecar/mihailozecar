@@ -1,9 +1,9 @@
 <template>
   <div class="dcc-layout">
     <div class="dcc-header d-flex justify-content-between align-items-center p-2">
-      <h1>
+      <h3>
         Daily Coding Challenge
-      </h1>
+      </h3>
       <Button 
         @click="signOut"
       >

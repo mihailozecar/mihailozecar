@@ -5,12 +5,13 @@ const DccLayout = () => import('@/layout/DccLayout.vue')
 const AuthLayout = () => import('@/layout/AuthLayout.vue')
 
 const DccHome = () => import('@/components/DccHome.vue')
+const ProblemDetails = () => import('@/components/ProblemDetails.vue')
 
 const routes = [
   {
     path: '/',
-    component: BaseLayout,
     name: 'root',
+    component: BaseLayout,
     redirect: { name: 'home' },
     meta: {
       authRequired: false
@@ -18,8 +19,8 @@ const routes = [
     children: [
       {
         path: 'home',
-        component: Home,
         name: 'home',
+        component: Home,
         meta: {
           authRequired: false
         }
@@ -28,8 +29,8 @@ const routes = [
   },
   {
     path: '/dcc',
-    component: DccLayout,
     name: 'dcc',
+    component: DccLayout,
     redirect: { name: 'dcc-home' },
     meta: {
       authRequired: true
@@ -37,18 +38,29 @@ const routes = [
     children: [
       {
         path: 'home',
-        component: DccHome,
         name: 'dcc-home',
+        component: DccHome,
         meta: {
           authRequired: true
-        }
+        },
+        children: [
+          {
+            path: 'problem/:problemKey',
+            name: 'problem-details',
+            component: ProblemDetails,
+            meta: {
+              authRequired: true
+            },
+            props: true
+          }
+        ]
       }
     ]
   },
   {
     path: '/auth',
-    component: AuthLayout,
     name: 'auth',
+    component: AuthLayout,
     meta: {
       authRequired: false
     }
