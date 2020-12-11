@@ -66,5 +66,6 @@ export default {
     border-radius: 5px;
     border: 1px solid white;
     box-shadow: 9.91px 9.91px 15px #E4E4E4, -9.91px -9.91px 15px #FFFFFF;
+    text-align: justify;
   }
 </style>
