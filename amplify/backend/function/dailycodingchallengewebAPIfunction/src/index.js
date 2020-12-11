@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
-const BUCKET_NAME = 'mz-dailycodingchallenge';
+const BUCKET_NAME = process.env.DCC_BUCKET;
 
 const ActionMap = {
   'list': listAllProcessedObjects,
