@@ -1,7 +1,15 @@
 <template>
   <div class="dcc-home px-2">
     <template v-if="isDccHome">
-      <div class="d-flex align-items-center">
+      <h3 
+        v-if="loadingInProgress"
+      >
+        Loading...
+      </h3>
+      <div
+        class="d-flex align-items-center"
+        v-else
+      >
         <FormGroup
           label="Search"
           v-model="search"
@@ -20,7 +28,7 @@
       
       <div class="d-flex flex-wrap">
         <div
-          v-for="problem in problemListSortedFiltered"
+          v-for="problem in problemListFilteredSorted"
           :key="problem.Key"
           class="problem"
           @click="selectProblem(problem)"
@@ -52,6 +60,7 @@
       >
         Back
       </Button>
+
       <router-view></router-view>
     </template>
   </div>
@@ -89,11 +98,8 @@ export default {
     }
   },
   computed: {
-    problemListSorted() {
-      return [...this.problemList].sort((a,b) => a.num > b.num? -1 : 1);
-    },
-    problemListSortedFiltered() {
-      const filtered = this.problemListSorted.filter(problem => {
+    problemListFiltered() {
+      const filtered = this.problemList.filter(problem => {
         let searchMatch = true;
         let categoryMatch = true;
 
@@ -109,9 +115,25 @@ export default {
       });
       return filtered;
     },
+    problemListFilteredSorted() {
+      return [...this.problemListFiltered].sort((a,b) => parseInt(a.num) > parseInt(b.num)? -1 : 1);
+    },
     selectedCategoryFilters() {
       const filters = this.categoryFilter.filter(category => category.value);
       return filters.map(filter => filter.id);
+    },
+    problemsCount() {
+      const count = {};
+
+      for (const problem of this.problemListFilteredSorted) {
+        if (!count[problem.category]) {
+          count[problem.category] = 0;
+        }
+
+        count[problem.category]++;
+      }
+
+      return count;
     },
     isDccHome() {
       return this.$route.name == 'dcc-home';
@@ -195,7 +217,7 @@ export default {
 
   .problem {
     background: white;
-    padding: 2em;
+    padding: 1.5em;
     margin: 1em;
     cursor: pointer;
     border-radius: 1em;
