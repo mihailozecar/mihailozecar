@@ -122,6 +122,10 @@ export default {
     margin-left: .25rem;
   }
 
+  .ml-2 {
+    margin-left: .5rem;
+  }
+
   .text-center {
     text-align: center;
   }

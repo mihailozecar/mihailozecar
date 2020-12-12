@@ -16,7 +16,7 @@
         :value="value"
         :disabled="disabled"
         @input="emitInput"
-        @keyup.enter="emitEnter"
+        @keyup="emitKeyup"
       >
     </fieldset>
   </div>
@@ -61,6 +61,13 @@ export default {
     },
     emitEnter(e) {
       this.$emit('enter', e);
+    },
+    emitKeyup(e) {
+      this.$emit('keyup', e);
+
+      if (e.which == 13) {
+        this.emitEnter(e);
+      }
     },
     focus() {
       if (this.disabled) {

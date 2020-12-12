@@ -1,26 +1,33 @@
 <template>
   <div class="dcc-home px-2">
     <template v-if="isDccHome">
-      <Button 
-        @click="loadData"
-        :disabled="loadingInProgress"
-        class="m-1-em"
-      >
-        {{
-          loadingInProgress? 'Loading...' : 'Refresh'
-        }}
-      </Button>
+      <div class="d-flex align-items-center">
+        <FormGroup
+          label="Search"
+          v-model="search"
+        ></FormGroup>
 
+        <Button
+          v-for="category in categoryFilter"
+          :key="category.id"
+          class="ml-2"
+          :primary="category.value"
+          @click="onClickCategoryFilter(category)"
+        >
+          {{ category.id }}
+        </Button>
+      </div>
+      
       <div class="d-flex flex-wrap">
         <div
-          v-for="problem in problemListSorted"
+          v-for="problem in problemListSortedFiltered"
           :key="problem.Key"
           class="problem"
           @click="selectProblem(problem)"
         >
           <div>
             <span class="font-weight-bold">
-              Problem {{ problem.num }}
+              Problem #{{ problem.num }}
             </span>
 
             <span 
@@ -52,21 +59,59 @@
 
 <script>
 import Button from '@/components/Button.vue'
+import FormGroup from '@/components/FormGroup.vue'
 
 export default {
   name: 'DccHome',
   components: {
-    Button
+    Button,
+    FormGroup
   },
   data() {
     return {
       loadingInProgress: false,
-      problemList: []
+      problemList: [],
+      search: null,
+      categoryFilter: [
+        {
+          id: 'easy',
+          value: false
+        },
+        {
+          id: 'medium',
+          value: false
+        },
+        {
+          id: 'hard',
+          value: false
+        }
+      ]
     }
   },
   computed: {
     problemListSorted() {
       return [...this.problemList].sort((a,b) => a.num > b.num? -1 : 1);
+    },
+    problemListSortedFiltered() {
+      const filtered = this.problemListSorted.filter(problem => {
+        let searchMatch = true;
+        let categoryMatch = true;
+
+        if (this.search && (problem.num + '').indexOf(this.search) == -1) {
+          searchMatch = false;
+        }
+
+        if (this.selectedCategoryFilters.length > 0 && this.selectedCategoryFilters.indexOf(problem.category) == -1) {
+          categoryMatch = false;
+        }
+
+        return searchMatch && categoryMatch;
+      });
+      return filtered;
+    },
+    selectedCategoryFilters() {
+      const filters = this.categoryFilter.filter(category => category.value);
+      return filters.map(filter => filter.id);
     },
     isDccHome() {
       return this.$route.name == 'dcc-home';
@@ -135,6 +180,9 @@ export default {
         num,
         category
       };
+    },
+    onClickCategoryFilter(category) {
+      category.value = !category.value;
     }
   }
 }
@@ -162,6 +210,8 @@ export default {
   .category {
     padding: 3px 6px;
     border-radius: 5px;
+    background: white;
+    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
   }
 
   .category.category-easy {
