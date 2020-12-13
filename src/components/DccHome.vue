@@ -7,7 +7,7 @@
         Loading...
       </h3>
       <div
-        class="d-flex align-items-center"
+        class="d-flex align-items-center flex-wrap"
         v-else
       >
         <FormGroup
@@ -15,15 +15,21 @@
           v-model="search"
         ></FormGroup>
 
-        <Button
-          v-for="category in categoryFilter"
-          :key="category.id"
-          class="ml-2"
-          :primary="category.value"
-          @click="onClickCategoryFilter(category)"
-        >
-          {{ category.id }}
-        </Button>
+        <div>
+          <Button
+            v-for="category in categoryFilter"
+            :key="category.id"
+            class="ml-2"
+            :primary="category.value"
+            @click="onClickCategoryFilter(category)"
+          >
+            {{ category.id }}
+          </Button>
+        </div>
+
+        <div class="ml-2">
+          Problems: {{ problemListFilteredSorted.length }}
+        </div>
       </div>
       
       <div class="d-flex flex-wrap">
@@ -56,6 +62,7 @@
     <template v-else>
       <Button
         class="m-1-em"
+        primary
         @click="backToDccHome"
       >
         Back
@@ -211,10 +218,6 @@ export default {
 </script>
 
 <style scoped>
-  .preview {
-    margin: 1em;
-  }
-
   .problem {
     background: white;
     padding: 1.5em;
@@ -251,5 +254,12 @@ export default {
 
   .m-1-em {
     margin: 1em;
+  }
+
+  @media screen and (max-width: 768px) {
+    .problem {
+      padding: 1em .5em;
+      margin: .5em;
+    }
   }
 </style>

@@ -26,7 +26,7 @@ exports.handler = async (event) => {
     response = createResponseOk(result);
 
   } catch (error) {
-    response = createResponseInternalError(error);
+    throw new Error(error);
   }
 
   return response;
@@ -53,7 +53,7 @@ async function getProblem(params) {
   };
 
   const problemRaw = await s3.getObject(s3Params).promise();
-  const problem = JSON.parse(problemRaw.Body.toString('ascii'));
+  const problem = JSON.parse(problemRaw.Body.toString('utf-8'));
 
   return problem;
 }

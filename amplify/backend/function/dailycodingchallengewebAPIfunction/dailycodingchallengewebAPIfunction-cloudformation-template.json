@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-mihailozecar-master-160354-deployment",
-          "S3Key": "amplify-builds/dailycodingchallengewebAPIfunction-7234594d396931365444-build.zip"
+          "S3Key": "amplify-builds/dailycodingchallengewebAPIfunction-454d38586c5968527336-build.zip"
         }
       }
     },

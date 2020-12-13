@@ -1,6 +1,12 @@
 <template>
   <div class="problem-details">
     <div class="problem-text">
+      <div class="font-weight-bold">
+        Problem #{{ problem.problem }}
+      </div>
+
+      <hr>
+      
       {{ 
         loadingInProgress
         ? 'Loading...'
@@ -67,5 +73,11 @@ export default {
     border: 1px solid white;
     box-shadow: 9.91px 9.91px 15px #E4E4E4, -9.91px -9.91px 15px #FFFFFF;
     text-align: justify;
+  }
+
+  @media screen and (min-width: 768px) {
+    .problem-text {
+      max-width: 500px;
+    }
   }
 </style>
