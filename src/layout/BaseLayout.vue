@@ -96,7 +96,7 @@ export default {
   .sidebar {
     grid-area: sidebar;
     overflow: auto;
-    background: white;
+    background: var(--default-background);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     padding: 1.5em;
   }
@@ -131,6 +131,12 @@ export default {
 
     .sidebar {
       padding-bottom: 5em;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .social-link a {
+      color: #bbe1fa;
     }
   }
 </style>

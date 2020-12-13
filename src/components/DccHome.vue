@@ -219,12 +219,12 @@ export default {
 
 <style scoped>
   .problem {
-    background: white;
+    background: var(--default-background);
     padding: 1.5em;
     margin: 1em;
     cursor: pointer;
     border-radius: 1em;
-    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--default-box-shadow);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
   }
 
@@ -236,7 +236,7 @@ export default {
     padding: 3px 6px;
     border-radius: 5px;
     background: white;
-    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--default-box-shadow);
   }
 
   .category.category-easy {
@@ -260,6 +260,12 @@ export default {
     .problem {
       padding: 1em .5em;
       margin: .5em;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .category {
+      color: black !important;
     }
   }
 </style>

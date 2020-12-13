@@ -102,4 +102,15 @@ export default {
     outline: none;
     font-size: 16px;
   }
+
+  @media (prefers-color-scheme: dark) {
+    .form-group fieldset {
+      border-color: #bc6ff1;
+      color: #bc6ff1;
+    }
+
+    .form-group .form-group-input {
+      color: white;
+    }
+  }
 </style>

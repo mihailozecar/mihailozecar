@@ -10,11 +10,21 @@ export default {
 
 <style>
   /* global styles */
+  :root {
+    --green-accent-color: #008936;
+    --light-green-accent-color: #b3e6c7;
+    --purple-accent-color: #651fff;
+    --light-purple-accent-color: #b388ff;
+    --default-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    --default-background: #fafafa;
+    --default-background-light: var(--default-background);
+  }
+
   html,
   body,
   #app {
     color: black;
-    background: #fafafa;
+    background: var(--default-background);
     height: 100%;
     position: relative;
     padding: 0px;
@@ -31,15 +41,22 @@ export default {
     color: rgba(0, 0, 0, 0.23);
   }
 
-  :root {
-    --green-accent-color: #008936;
-    --light-green-accent-color: #b3e6c7;
-    --purple-accent-color: #651fff;
-    --light-purple-accent-color: #b388ff;
-  }
-
   .accent {
     color: var(--green-accent-color);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --default-background: #222831;
+      --default-background-light: #30475E;
+      --default-box-shadow:  9px 9px 18px #1d222a, -9px -9px 18px #272e38;
+    }
+
+    html,
+    body,
+    #app {
+      color: white;
+    }
   }
 
   .mobile-only {

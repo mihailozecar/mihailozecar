@@ -76,7 +76,7 @@ export default {
     padding: .5rem;
     font-size: 1em;
     outline: none;
-    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--default-box-shadow);
   }
 
   .btn.disabled {
@@ -89,12 +89,22 @@ export default {
   }
 
   .btn-default {
-    background: white;
+    background: var(--default-background-light);
   }
 
   .btn-primary {
     background: #651fff;
     box-shadow: 3px 2px 10px 0px rgba(101, 31, 255, 0.1);
     color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .btn-default {
+      color: white;
+    }
+
+    .btn-primary {
+      background: #bc6ff1;
+    }
   }
 </style>

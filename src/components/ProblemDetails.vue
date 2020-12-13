@@ -70,8 +70,8 @@ export default {
   .problem-text {
     padding: 1em;
     border-radius: 5px;
-    border: 1px solid white;
-    box-shadow: 9.91px 9.91px 15px #E4E4E4, -9.91px -9.91px 15px #FFFFFF;
+    background: var(--default-background);
+    box-shadow: var(--default-box-shadow);
     text-align: justify;
   }
 

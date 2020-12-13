@@ -144,8 +144,8 @@ export default {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    background: white;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: var(--default-background);
+    box-shadow: var(--default-box-shadow);
     border-radius: .5em;
     margin-top: 1em;
     margin-bottom: 2em;
