@@ -16,14 +16,30 @@ export default {
     --purple-accent-color: #651fff;
     --light-purple-accent-color: #b388ff;
     --default-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    --default-box-shadow-hover: 3px 2px 10px 0px rgba(0, 0, 0, 0.36);
     --default-background: #fafafa;
     --default-background-light: var(--default-background);
+    --default-color: #333;
+    --btn-press-transform: translate(1.5px, 2.2px);
+    --btn-press-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.24);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --default-background: #222831;
+      --default-background-light: #30475E;
+      --default-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.36);
+      --default-box-shadow-hover: 3px 2px 10px 0px rgba(188, 111, 241, 0.5);
+      --default-color: white;
+      --purple-accent-color: #892cdc;
+      --light-purple-accent-color: #bc6ff1;
+    }
   }
 
   html,
   body,
   #app {
-    color: black;
+    color: var(--default-color);
     background: var(--default-background);
     height: 100%;
     position: relative;
@@ -41,22 +57,13 @@ export default {
     color: rgba(0, 0, 0, 0.23);
   }
 
-  .accent {
-    color: var(--green-accent-color);
+  .btn-press:active {
+    transform: var(--btn-press-transform);
+    box-shadow: var(--btn-press-box-shadow);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --default-background: #222831;
-      --default-background-light: #30475E;
-      --default-box-shadow:  9px 9px 18px #1d222a, -9px -9px 18px #272e38;
-    }
-
-    html,
-    body,
-    #app {
-      color: white;
-    }
+  .accent {
+    color: var(--green-accent-color);
   }
 
   .mobile-only {

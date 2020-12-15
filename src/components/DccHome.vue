@@ -229,7 +229,7 @@ export default {
   }
 
   .problem:hover {
-    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.36);
+    box-shadow: var(--default-box-shadow-hover);
   }
 
   .category {

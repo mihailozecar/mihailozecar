@@ -84,8 +84,8 @@ export default {
   }
 
   .btn:active:not(.disabled) { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.24); 
+    transform: var(--btn-press-transform); 
+    box-shadow: var(--btn-press-box-shadow);
   }
 
   .btn-default {
@@ -93,7 +93,7 @@ export default {
   }
 
   .btn-primary {
-    background: #651fff;
+    background: var(--purple-accent-color);
     box-shadow: 3px 2px 10px 0px rgba(101, 31, 255, 0.1);
     color: white;
   }
@@ -104,7 +104,7 @@ export default {
     }
 
     .btn-primary {
-      background: #bc6ff1;
+      background: var(--purple-accent-color);
     }
   }
 </style>

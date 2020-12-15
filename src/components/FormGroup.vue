@@ -105,8 +105,8 @@ export default {
 
   @media (prefers-color-scheme: dark) {
     .form-group fieldset {
-      border-color: #bc6ff1;
-      color: #bc6ff1;
+      border-color: var(--light-purple-accent-color);
+      color: var(--light-purple-accent-color);
     }
 
     .form-group .form-group-input {
