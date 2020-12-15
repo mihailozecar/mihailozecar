@@ -142,6 +142,10 @@ export default {
     margin-top: .25rem;
   }
 
+  .mt-2 {
+    margin-top: .5rem;
+  }
+
   .ml-1 {
     margin-left: .25rem;
   }

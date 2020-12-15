@@ -13,6 +13,7 @@
         <FormGroup
           label="Search"
           v-model="search"
+          @input="currentPage = 0"
         ></FormGroup>
 
         <div>
@@ -30,11 +31,62 @@
         <div class="ml-2">
           Problems: {{ problemListFilteredSorted.length }}
         </div>
+
+        <div 
+          class="ml-2 gaps mobile-margin-top"
+          v-if="gaps.length > 0"
+        >
+          Gaps: {{ gaps.join(', ') }}
+        </div>
+
+        <div class="flex-1"></div>
+
+        <div class="d-flex flex-wrap mobile-margin-top">
+          <Button
+            class="ml-2"
+            @click="currentPage = 0"
+          >
+            &lt;&lt;
+          </Button>
+
+          <Button
+            class="ml-2"
+            @click="currentPage--"
+            :disabled="currentPage == 0"
+          >
+            &lt;
+          </Button>
+
+          <Button 
+            class="ml-2"
+            v-for="i in displayedPages"
+            :key="`page_${i}`"
+            :primary="currentPage == i"
+            @click="currentPage = i"
+          >
+            {{ i + 1 }}
+          </Button>
+
+          <Button
+            class="ml-2"
+            @click="currentPage++"
+            :disabled="currentPage == pages.length - 1"
+          >
+            &gt;
+          </Button>
+
+          <Button
+            class="ml-2"
+            @click="currentPage = pages.length - 1"
+          >
+            &gt;&gt;
+          </Button>
+        </div>
       </div>
       
       <div class="d-flex flex-wrap">
         <div
-          v-for="problem in problemListFilteredSorted"
+          v-for="problem in pages[currentPage]"
           :key="problem.Key"
           class="problem"
           @click="selectProblem(problem)"
@@ -88,6 +140,9 @@ export default {
       loadingInProgress: false,
       problemList: [],
       search: null,
+      pageSize: 20,
+      currentPage: 0,
+      pageSectionLimit: 5,
       categoryFilter: [
         {
           id: 'easy',
@@ -125,6 +180,38 @@ export default {
     problemListFilteredSorted() {
       return [...this.problemListFiltered].sort((a,b) => parseInt(a.num) > parseInt(b.num)? -1 : 1);
     },
+    pages() {
+      const pages = [[]];
+      let counter = 0;
+
+      for (let i=0; i<this.problemListFilteredSorted.length; i++) {
+        const problem = this.problemListFilteredSorted[i];
+
+        if (counter >= this.pageSize) {
+          counter = 0;
+          pages.push([]);
+        }
+
+        pages[pages.length - 1].push(problem);
+        counter++;
+      }
+
+      return pages;
+    },
+    displayedPages() {
+      const pageSection = this.getPageSection(this.currentPage);
+      const displayedPages = [];
+
+      for (let i=0; i<this.pageSectionLimit; i++) {
+        const pageIndex = i + (this.pageSectionLimit * pageSection);
+        
+        if (pageIndex < this.pages.length) {
+          displayedPages.push(pageIndex);
+        }
+      }
+
+      return displayedPages;
+    },
     selectedCategoryFilters() {
       const filters = this.categoryFilter.filter(category => category.value);
       return filters.map(filter => filter.id);
@@ -141,6 +228,27 @@ export default {
       }
 
       return count;
+    },
+    gaps() {
+      const result = [];
+      let previousNum = 0;
+
+      if (this.search) {
+        return result;
+      }
+
+      for (let i=this.problemListFilteredSorted.length - 1;  i >= 0; i--) {
+        const problem = this.problemListFilteredSorted[i];
+        const currentNum = parseInt(problem.num);
+
+        if (currentNum - previousNum != 1) {
+          result.push(`${currentNum} - ${previousNum}`);
+        }
+
+        previousNum = currentNum;
+      }
+
+      return result.reverse();
     },
     isDccHome() {
       return this.$route.name == 'dcc-home';
@@ -212,6 +320,10 @@ export default {
     },
     onClickCategoryFilter(category) {
       category.value = !category.value;
+      this.currentPage = 0;
+    },
+    getPageSection(page) {
+      return Math.floor(page / this.pageSectionLimit);
     }
   }
 }
@@ -256,10 +368,18 @@ export default {
     margin: 1em;
   }
 
+  .gaps {
+    color: #f55060;
+  }
+
   @media screen and (max-width: 768px) {
     .problem {
       padding: 1em .5em;
       margin: .5em;
+    }
+
+    .mobile-margin-top {
+      margin-top: .5rem;
     }
   }
 
