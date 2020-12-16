@@ -4,11 +4,17 @@
       <h3>
         Daily Coding Challenge
       </h3>
-      <Button 
-        @click="signOut"
-      >
-        Sign Out
-      </Button>
+
+      <div>
+        {{ user.username }}
+
+        <Button 
+          @click="signOut"
+          class="ml-2"
+        >
+          Sign Out
+        </Button>
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -16,19 +22,31 @@
 
 <script>
 import Button from '@/components/Button.vue'
-import { signOut } from '@/util/auth.js'
+import {
+  signOut,
+  getUser
+} from '@/util/auth.js'
 
 export default {
   name: 'DccLayout',
   components: {
     Button
   },
+  mounted() {
+    this.getUser();
+  },
   data() {
-    return {}
+    return {
+      user: {}
+    }
   },
   methods: {
     signOut() {
       signOut();
+    },
+    async getUser() {
+      const user = await getUser();
+      this.user = user;
     }
   }
 }

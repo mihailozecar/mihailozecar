@@ -22,6 +22,8 @@ export default {
     --default-color: #333;
     --btn-press-transform: translate(1.5px, 2.2px);
     --btn-press-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.24);
+    --loading-animation: loading 3s infinite;
+    --error-color: #f3384a;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -202,5 +204,24 @@ export default {
 
   .font-weight-bold {
     font-weight: bold;
+  }
+
+  @keyframes loading {
+    0% {
+      border-color: var(--light-purple-accent-color);
+      color: var(--light-purple-accent-color);
+    }
+    33% {
+      border-color: #0bb69f;
+      color: #0bb69f;
+    }
+    66% {
+      border-color: #e91e63;
+      color:#e91e63;
+    }
+    100% {
+      border-color: #5b7dff;
+      color: #5b7dff;
+    }
   }
 </style>

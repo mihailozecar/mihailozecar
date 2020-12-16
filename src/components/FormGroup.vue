@@ -14,9 +14,11 @@
         ref="input"
         :type="type"
         :value="value"
-        :disabled="disabled"
+        :disabled="disabledFinal"
+        :maxlength="maxlength"
         @input="emitInput"
         @keyup="emitKeyup"
+        @blur="emitBlur"
       >
     </fieldset>
   </div>
@@ -41,6 +43,34 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
+    },
+    validate: {
+      type: Function,
+      default: null
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    eager: {
+      type: Boolean,
+      default: false
+    },
+    minlength: {
+      type: [String, Number],
+      default: 0
+    },
+    maxlength: {
+      type: [String, Number],
+      default: 255
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -52,12 +82,38 @@ export default {
         classes.push('disabled');
       }
 
+      if (!this.valid) {
+        classes.push('is-invalid');
+      }
+
+      if (this.loading) {
+        classes.push('loading');
+      }
+
       return classes.join(' ');
+    },
+    disabledFinal() {
+      return this.disabled || this.loading;
+    }
+  },
+  data() {
+    return {
+      valid: true
+    };
+  },
+  mounted() {
+    if (this.autofocus) {
+      this.focus();
     }
   },
   methods: {
-    emitInput(e) {
+    async emitInput(e) {
       this.$emit('input', e.target.value);
+      
+      if (this.eager) {
+        await this.$nextTick();
+        await this.validateFinal();
+      }
     },
     emitEnter(e) {
       this.$emit('enter', e);
@@ -69,12 +125,39 @@ export default {
         this.emitEnter(e);
       }
     },
+    async emitBlur(e) {
+      this.$emit('blur', e);
+
+      if (!this.eager) {
+        await this.$nextTick();
+        await this.validateFinal();
+      }
+    },
     focus() {
       if (this.disabled) {
         return;
       }
 
       this.$refs.input.focus();
+    },
+    async validateFinal() {
+      this.valid = true;
+      
+      if (this.validate != null) {
+        this.valid = await this.validate();
+      } else if (this.required) {
+        this.valid = typeof this.value == 'string' && this.value.trim() != '';
+      } else if (this.minlength != 0) {
+        this.valid = typeof this.value == 'string' && this.value.trim().length >= parseInt(this.minlength);
+      }
+
+      return this.valid;
+    },
+    async isValid() {
+      return await this.validateFinal();
+    },
+    resetValidation() {
+      this.valid = true;
     }
   }
 }
@@ -94,6 +177,11 @@ export default {
     border-color: #311b92;
     color: #311b92;
   }
+
+  .form-group.is-invalid fieldset {
+    border-color: var(--error-color);
+    color: var(--error-color);
+  }
   
   .form-group .form-group-input {
     background: transparent;
@@ -101,6 +189,10 @@ export default {
     border: none;
     outline: none;
     font-size: 16px;
+  }
+
+  .form-group.loading fieldset {
+    animation: var(--loading-animation);
   }
 
   @media (prefers-color-scheme: dark) {
