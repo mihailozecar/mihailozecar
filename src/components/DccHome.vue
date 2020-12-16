@@ -140,7 +140,7 @@ export default {
       loadingInProgress: false,
       problemList: [],
       search: null,
-      pageSize: 20,
+      pageSize: 50,
       currentPage: 0,
       pageSectionLimit: 5,
       categoryFilter: [
