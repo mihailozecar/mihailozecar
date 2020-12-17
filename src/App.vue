@@ -15,6 +15,7 @@ export default {
     --light-green-accent-color: #b3e6c7;
     --purple-accent-color: #651fff;
     --light-purple-accent-color: #b388ff;
+    --light-purple-accent-color-dim-shade: rgba(179, 136, 255, .3);
     --default-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.1);
     --default-box-shadow-hover: 3px 2px 10px 0px rgba(0, 0, 0, 0.36);
     --default-background: #fafafa;

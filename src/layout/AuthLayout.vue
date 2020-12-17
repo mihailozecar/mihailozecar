@@ -9,7 +9,7 @@
 
     <div 
       class="auth-form sign-in-form"
-      v-if="!isRegistration"
+      v-if="currentAuthState == AuthState.SIGN_IN"
     >
       <FormGroup
         label="Username"
@@ -32,10 +32,17 @@
 
       <div class="d-flex justify-content-between">
         <Button
-          @click="toggleAuthState"
+          @click="setAuthState(AuthState.REGISTER)"
           :disabled="loadingInProgress"
         >
           Register
+        </Button>
+
+        <Button
+          @click="setAuthState(AuthState.FORGOT_PASSWORD)"
+          :disabled="loadingInProgress"
+        >
+          Forgot password?
         </Button>
 
         <Button
@@ -50,100 +57,197 @@
 
     <div 
       class="auth-form registration-form"
-      v-else
+      v-if="currentAuthState == AuthState.REGISTER"
     >
-      <template v-if="!enterConfirmationCode">
-        <FormGroup
-          label="Username"
-          v-model="newUsername"
-          :loading="loadingInProgress"
-          ref="newUsername"
-          @enter="register"
-          required
-        ></FormGroup>
+      <FormGroup
+        label="Username"
+        v-model="newUsername"
+        :loading="loadingInProgress"
+        ref="newUsername"
+        @enter="register"
+        required
+      ></FormGroup>
 
-        <FormGroup
-          label="Email"
-          type="email"
-          v-model="email"
-          :loading="loadingInProgress"
-          ref="email"
-          @enter="register"
-          required
-        ></FormGroup>
+      <FormGroup
+        label="Email"
+        type="email"
+        v-model="email"
+        :loading="loadingInProgress"
+        ref="email"
+        @enter="register"
+        required
+      ></FormGroup>
 
-        <FormGroup
-          label="Password"
-          v-model="newPassword"
-          type="password"
-          :loading="loadingInProgress"
-          @enter="register"
-          ref="newPassword"
-          minlength="8"
-        ></FormGroup>
+      <FormGroup
+        label="Password"
+        v-model="newPassword"
+        type="password"
+        :loading="loadingInProgress"
+        @enter="register"
+        ref="newPassword"
+        minlength="8"
+      ></FormGroup>
 
-        <FormGroup
-          label="Confirm password"
-          v-model="newPasswordConfirm"
-          type="password"
-          :loading="loadingInProgress"
-          @enter="register"
-          :validate="() => newPasswordConfirm && newPasswordConfirm == newPassword"
-          ref="newPasswordConfirm"
-        ></FormGroup>
+      <FormGroup
+        label="Confirm password"
+        v-model="newPasswordConfirm"
+        type="password"
+        :loading="loadingInProgress"
+        @enter="register"
+        :validate="() => newPasswordConfirm && newPasswordConfirm == newPassword"
+        ref="newPasswordConfirm"
+      ></FormGroup>
 
-        <div class="d-flex justify-content-between">
-          <Button
-            @click="toggleAuthState"
-            :disabled="loadingInProgress"
-          >
-            Sign In
-          </Button>
+      <div class="d-flex justify-content-between">
+        <Button
+          @click="setAuthState(AuthState.SIGN_IN)"
+          :disabled="loadingInProgress"
+        >
+          Sign In
+        </Button>
 
-          <Button
-            primary
-            :disabled="loadingInProgress"
-            @click="register"
-          >
-            Register
-          </Button>
-        </div>
-      </template>
+        <Button
+          primary
+          :disabled="loadingInProgress"
+          @click="register"
+        >
+          Register
+        </Button>
+      </div>
+    </div>
 
-      <template v-else>
-        <FormGroup
-          label="Enter confirmation code from your email"
-          v-model="confirmationCode"
-          :loading="loadingInProgress"
-          @enter="submitConfirmationCode"
-          ref="confirmationCode"
-          required
-        ></FormGroup>
+    <div
+      class="auth-form"
+      v-if="currentAuthState == AuthState.REGISTER_CONFIRM"
+    >
+      <FormGroup
+        label="Username"
+        v-model="newUsername"
+        :loading="loadingInProgress"
+        disabled
+      ></FormGroup>
 
-        <div class="d-flex justify-content-between">
-          <Button
-            @click="toggleAuthState"
-            :disabled="loadingInProgress"
-          >
-            Sign In
-          </Button>
+      <FormGroup
+        label="Enter confirmation code from your email"
+        v-model="confirmationCode"
+        :loading="loadingInProgress"
+        @enter="submitConfirmationCode"
+        ref="confirmationCode"
+        required
+      ></FormGroup>
 
-          <Button
-            @click="resendConfirmationCode"
-            :disabled="loadingInProgress"
-          >
-            Resend code
-          </Button>
+      <div class="d-flex justify-content-between">
+        <Button
+          @click="setAuthState(AuthState.SIGN_IN)"
+          :disabled="loadingInProgress"
+        >
+          Sign In
+        </Button>
 
-          <Button
-            primary
-            :disabled="loadingInProgress"
-            @click="submitConfirmationCode"
-          >
-            Confirm
-          </Button>
-        </div>
-      </template>
+        <Button
+          @click="resendConfirmationCode"
+          :disabled="loadingInProgress"
+        >
+          Resend code
+        </Button>
+
+        <Button
+          primary
+          :disabled="loadingInProgress"
+          @click="submitConfirmationCode"
+        >
+          Confirm
+        </Button>
+      </div>
+    </div>
+    
+    <div 
+      class="auth-form"
+      v-if="currentAuthState == AuthState.FORGOT_PASSWORD"
+    >
+      <FormGroup
+        label="Username"
+        v-model="fpUsername"
+        :loading="loadingInProgress"
+        @enter="forgotPassword"
+        ref="fpUsername"
+        required
+      ></FormGroup>
+
+      <div class="d-flex justify-content-between">
+        <Button
+          @click="setAuthState(AuthState.SIGN_IN)"
+          :disabled="loadingInProgress"
+        >
+          Sign In
+        </Button>
+
+        <Button
+          primary
+          :disabled="loadingInProgress"
+          @click="forgotPassword"
+        >
+          Submit
+        </Button>
+      </div>
+    </div>
+
+    <div 
+      class="auth-form"
+      v-if="currentAuthState == AuthState.FORGOT_PASSWORD_CONFIRM"
+    >
+      <FormGroup
+        label="Username"
+        v-model="fpUsername"
+        :loading="loadingInProgress"
+        disabled
+      ></FormGroup>
+
+      <FormGroup
+        label="Enter confirmation code from your email"
+        v-model="fpConfirmationCode"
+        :loading="loadingInProgress"
+        @enter="forgotPasswordConfirm"
+        ref="fpConfirmationCode"
+        required
+      ></FormGroup>
+
+      <FormGroup
+        label="Password"
+        v-model="fpNewPassword"
+        type="password"
+        :loading="loadingInProgress"
+        @enter="forgotPasswordConfirm"
+        ref="fpNewPassword"
+        minlength="8"
+      ></FormGroup>
+
+      <FormGroup
+        label="Confirm password"
+        v-model="fpNewPasswordConfirm"
+        type="password"
+        :loading="loadingInProgress"
+        @enter="forgotPasswordConfirm"
+        :validate="() => fpNewPasswordConfirm && fpNewPasswordConfirm == fpNewPassword"
+        ref="fpNewPasswordConfirm"
+      ></FormGroup>
+
+      <div class="d-flex justify-content-between">
+        <Button
+          @click="setAuthState(AuthState.SIGN_IN)"
+          :disabled="loadingInProgress"
+        >
+          Sign In
+        </Button>
+
+        <Button
+          primary
+          :disabled="loadingInProgress"
+          @click="forgotPasswordConfirm"
+        >
+          Confirm
+        </Button>
+      </div>
     </div>
 
     <div 
@@ -168,7 +272,9 @@ import {
   signIn,
   register,
   confirmRegistration,
-  resendConfirmationCode
+  resendConfirmationCode,
+  forgotPassword,
+  forgotPasswordConfirm
 } from '@/util/auth.js'
 
 export default {
@@ -186,11 +292,24 @@ export default {
       newPasswordConfirm: null,
       email: null,
       confirmationCode: null,
+      fpUsername: null,
+      fpConfirmationCode: null,
+      fpNewPassword: null,
+      fpNewPasswordConfirm: null,
       loadingInProgress: false,
-      isRegistration: false,
-      enterConfirmationCode: false,
-      errorMessage: null
+      errorMessage: null,
+      AuthState: {
+        SIGN_IN: 'sign_in',
+        REGISTER: 'register',
+        REGISTER_CONFIRM: 'register_confirm',
+        FORGOT_PASSWORD: 'forgot_password',
+        FORGOT_PASSWORD_CONFIRM: 'forgot_password_confirm'
+      },
+      currentAuthState: null
     }
+  },
+  mounted() {
+    this.currentAuthState = this.AuthState.SIGN_IN;
   },
   methods: {
     async signIn() {
@@ -206,7 +325,8 @@ export default {
       this.errorMessage = null;
 
       try {
-        await signIn(this.username, this.password);
+        const user = await signIn(this.username, this.password);
+        console.log(user);
         this.loadingInProgress = false;
       } catch (error) {
         console.error(error);
@@ -214,6 +334,10 @@ export default {
 
         if (error.code == 'UserNotFoundException' || error.code == 'NotAuthorizedException') {
           this.errorMessage = 'Wrong username and/or password';
+        }
+
+        if (error.code == 'PasswordResetRequiredException') {
+          this.errorMessage = 'Your password has been reset, so you need a new one. Click "Forgot password"';
         }
       }
     },
@@ -232,7 +356,7 @@ export default {
       try {
         await register(this.newUsername, this.newPassword, this.email);
         this.loadingInProgress = false;
-        this.enterConfirmationCode = true;
+        this.setAuthState(this.AuthState.REGISTER_CONFIRM, true);
       } catch (error) {
         console.error(error);
         this.loadingInProgress = false;
@@ -288,6 +412,56 @@ export default {
         }
       }
     },
+    async forgotPassword() {
+      if (!(await this.validateForgotPasswordForm())) {
+        return;
+      }
+
+      if (this.loadingInProgress) {
+        return;
+      }
+
+      this.loadingInProgress = true;
+      this.errorMessage = null;
+
+      try {
+        await forgotPassword(this.fpUsername);
+        this.loadingInProgress = false;
+        this.setAuthState(this.AuthState.FORGOT_PASSWORD_CONFIRM, true);
+      } catch (error) {
+        console.error(error);
+        this.loadingInProgress = false;
+
+        if (error.code == 'LimitExceededException') {
+          this.errorMessage = 'You like changing passwords, don\'t ya? Please, try again later';
+        }
+      }
+    },
+    async forgotPasswordConfirm() {
+      if (!(await this.validateForgotPasswordConfirmForm())) {
+        return;
+      }
+
+      if (this.loadingInProgress) {
+        return;
+      }
+
+      this.loadingInProgress = true;
+      this.errorMessage = null;
+
+      try {
+        await forgotPasswordConfirm(this.fpUsername, this.fpConfirmationCode, this.fpNewPassword);
+        await signIn(this.fpUsername, this.fpNewPassword);
+        this.loadingInProgress = false;
+      } catch (error) {
+        console.error(error);
+        this.loadingInProgress = false;
+
+        if (error.code == 'CodeMismatchException') {
+          this.errorMessage = 'Wrong confirmation code';
+        }
+      }
+    },
     async validateSignInForm() {
       const isUsernameValid = await this.$refs.username.isValid();
       const isPasswordValid = await this.$refs.password.isValid();
@@ -305,6 +479,16 @@ export default {
     async validateConfirmationForm() {
       return await this.$refs.confirmationCode.isValid();
     },
+    async validateForgotPasswordForm() {
+      return await this.$refs.fpUsername.isValid();
+    },
+    async validateForgotPasswordConfirmForm() {
+      const isConfirmationCodeValid = await this.$refs.fpConfirmationCode.isValid();
+      const isNewPasswordValid = await this.$refs.fpNewPassword.isValid();
+      const isNewPasswordConfirmValid = await this.$refs.fpNewPasswordConfirm.isValid();
+
+      return isConfirmationCodeValid && isNewPasswordValid && isNewPasswordConfirmValid;
+    },
     goHome() {
       this.$router.push({ name: 'home' });
     },
@@ -317,6 +501,10 @@ export default {
       this.email = null;
       this.confirmationCode = null;
       this.errorMessage = null;
+      this.fpUsername = null;
+      this.fpConfirmationCode = null;
+      this.fpNewPassword = null;
+      this.fpNewPasswordConfirm = null;
 
       this.$refs.username?.resetValidation();
       this.$refs.password?.resetValidation();
@@ -326,10 +514,12 @@ export default {
       this.$refs.newPasswordConfirm?.resetValidation();
       this.$refs.confirmationCode?.resetValidation();
     },
-    toggleAuthState() {
-      this.clearAllFields();
-      this.isRegistration = !this.isRegistration;
-      this.enterConfirmationCode = false;
+    setAuthState(state = this.AuthState.SIGN_IN, skipClearFields = false) {
+      if (!skipClearFields) {
+        this.clearAllFields();
+      }
+
+      this.currentAuthState = state;
     }
   }
 }

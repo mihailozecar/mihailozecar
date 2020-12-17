@@ -26,6 +26,11 @@ async function signIn(username, password) {
   }
 }
 
+async function signOut() {
+  await Auth.signOut();
+  EventBus.$emit('auth', { state: 'signout' });
+}
+
 async function register(username, password, email) {
   const user = await Auth.signUp({ username, password, attributes: { email } });
   return user;
@@ -39,9 +44,12 @@ async function resendConfirmationCode(username) {
   await Auth.resendSignUp(username);
 }
 
-async function signOut() {
-  await Auth.signOut();
-  EventBus.$emit('auth', { state: 'signout' });
+async function forgotPassword(username) {
+  await Auth.forgotPassword(username);
+}
+
+async function forgotPasswordConfirm(username, code, newPassword) {
+  await Auth.forgotPasswordSubmit(username, code, newPassword);
 }
 
 export {
@@ -50,5 +58,7 @@ export {
   signOut,
   register,
   confirmRegistration,
-  resendConfirmationCode
+  resendConfirmationCode,
+  forgotPassword,
+  forgotPasswordConfirm
 }

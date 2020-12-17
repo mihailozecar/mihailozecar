@@ -178,6 +178,10 @@ export default {
     color: #311b92;
   }
 
+  .form-group.disabled fieldset {
+    border-color: rgba(49, 27, 146, .3);
+  }
+
   .form-group.is-invalid fieldset {
     border-color: var(--error-color);
     color: var(--error-color);
@@ -199,6 +203,10 @@ export default {
     .form-group fieldset {
       border-color: var(--light-purple-accent-color);
       color: var(--light-purple-accent-color);
+    }
+
+    .form-group.disabled fieldset {
+      border-color: var(--light-purple-accent-color-dim-shade);
     }
 
     .form-group .form-group-input {
