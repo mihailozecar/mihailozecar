@@ -25,6 +25,7 @@ export default {
     --btn-press-box-shadow: 3px 2px 10px 0px rgba(0, 0, 0, 0.24);
     --loading-animation: loading 3s infinite;
     --error-color: #f3384a;
+    --success-color: var(--green-accent-color);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -36,6 +37,7 @@ export default {
       --default-color: white;
       --purple-accent-color: #892cdc;
       --light-purple-accent-color: #bc6ff1;
+      --success-color: var(--light-green-accent-color);
     }
   }
 
@@ -109,8 +111,6 @@ export default {
     }
   }
 
-  /* bootstrap-like failover */
-
   .flex-1 {
     flex: auto;
   }
@@ -173,7 +173,6 @@ export default {
   .w-100 {
     width: 100%;
   }
-  /* bootstrap-like failover END */
 
   .site-name {
     color: var(--light-green-accent-color);
@@ -205,6 +204,23 @@ export default {
 
   .font-weight-bold {
     font-weight: bold;
+  }
+
+  .router-link {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .loading-message {
+    color: #ffe082;
+  }
+
+  .success-message {
+    color: var(--success-color);
+  }
+
+  .error-message {
+    color: var(--error-color);
   }
 
   @keyframes loading {

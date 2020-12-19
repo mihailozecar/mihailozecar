@@ -233,7 +233,7 @@ export default {
       const result = [];
       let previousNum = 0;
 
-      if (this.search) {
+      if (this.search || this.selectedCategoryFilters.length > 0) {
         return result;
       }
 

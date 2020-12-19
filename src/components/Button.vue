@@ -20,25 +20,20 @@ export default {
     primary: {
       type: Boolean,
       default: false
+    },
+    danger: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
-    isDefaultType() {
-      let isDefault = true;
-
-      if (this.primary) {
-        isDefault = false;
-      }
-
-      return isDefault;
-    },
     cssClasses() {
       const classes = [];
 
-      if (!this.isDefaultType) {
-        if (this.primary) {
-          classes.push('btn-primary');
-        }
+      if (this.primary) {
+        classes.push('btn-primary');
+      } else if (this.danger) {
+        classes.push('btn-danger');
       } else {
         classes.push('btn-default');
       }
@@ -94,6 +89,12 @@ export default {
 
   .btn-primary {
     background: var(--purple-accent-color);
+    box-shadow: 3px 2px 10px 0px rgba(101, 31, 255, 0.1);
+    color: white;
+  }
+
+  .btn-danger {
+    background: var(--error-color);
     box-shadow: 3px 2px 10px 0px rgba(101, 31, 255, 0.1);
     color: white;
   }

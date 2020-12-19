@@ -213,7 +213,7 @@
       ></FormGroup>
 
       <FormGroup
-        label="Password"
+        label="New password"
         v-model="fpNewPassword"
         type="password"
         :loading="loadingInProgress"
@@ -223,7 +223,7 @@
       ></FormGroup>
 
       <FormGroup
-        label="Confirm password"
+        label="Confirm new password"
         v-model="fpNewPasswordConfirm"
         type="password"
         :loading="loadingInProgress"
@@ -533,13 +533,5 @@ export default {
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-  }
-
-  .loading-message {
-    color: #ffe082;
-  }
-
-  .error-message {
-    color: var(--error-color);
   }
 </style>

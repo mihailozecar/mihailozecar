@@ -1,11 +1,15 @@
 const BaseLayout = () => import('@/layout/BaseLayout.vue')
 const Home = () => import('@/components/Home.vue')
 
-const DccLayout = () => import('@/layout/DccLayout.vue')
+const AppLayout = () => import('@/layout/AppLayout.vue')
 const AuthLayout = () => import('@/layout/AuthLayout.vue')
 
 const DccHome = () => import('@/components/DccHome.vue')
 const ProblemDetails = () => import('@/components/ProblemDetails.vue')
+
+const Account = () => import('@/components/Account.vue')
+
+const _homepage = { name: 'dcc-home' };
 
 const routes = [
   {
@@ -18,7 +22,7 @@ const routes = [
     },
     children: [
       {
-        path: 'home',
+        path: '',
         name: 'home',
         component: Home,
         meta: {
@@ -30,18 +34,27 @@ const routes = [
   {
     path: '/dcc',
     name: 'dcc',
-    component: DccLayout,
-    redirect: { name: 'dcc-home' },
+    redirect: { name: 'app' },
+    meta: {
+      authRequired: true
+    }
+  },
+  {
+    path: '/app',
+    name: 'app',
+    component: AppLayout,
+    redirect: _homepage,
     meta: {
       authRequired: true
     },
     children: [
       {
-        path: 'home',
+        path: 'dcc',
         name: 'dcc-home',
         component: DccHome,
         meta: {
-          authRequired: true
+          authRequired: true,
+          header: 'Daily Coding Challenge'
         },
         children: [
           {
@@ -49,11 +62,21 @@ const routes = [
             name: 'problem-details',
             component: ProblemDetails,
             meta: {
-              authRequired: true
+              authRequired: true,
+              header: 'Daily Coding Challenge'
             },
             props: true
           }
         ]
+      },
+      {
+        path: 'account',
+        name: 'account',
+        component: Account,
+        meta: {
+          authRequired: true,
+          header: 'Account'
+        }
       }
     ]
   },
@@ -75,3 +98,5 @@ const routes = [
 ]
 
 export default routes
+
+export const homepage = _homepage.name
