@@ -18,6 +18,7 @@
         @enter="signIn"
         ref="username"
         required
+        autocomplete="username"
       ></FormGroup>
 
       <FormGroup
@@ -28,6 +29,7 @@
         @enter="signIn"
         required
         ref="password"
+        autocomplete="current-password"
       ></FormGroup>
 
       <div class="d-flex justify-content-between">
@@ -86,6 +88,7 @@
         @enter="register"
         ref="newPassword"
         minlength="8"
+        autocomplete="new-password"
       ></FormGroup>
 
       <FormGroup
@@ -96,6 +99,7 @@
         @enter="register"
         :validate="() => newPasswordConfirm && newPasswordConfirm == newPassword"
         ref="newPasswordConfirm"
+        autocomplete="new-password"
       ></FormGroup>
 
       <div class="d-flex justify-content-between">
@@ -220,6 +224,7 @@
         @enter="forgotPasswordConfirm"
         ref="fpNewPassword"
         minlength="8"
+        autocomplete="new-password"
       ></FormGroup>
 
       <FormGroup
@@ -230,6 +235,7 @@
         @enter="forgotPasswordConfirm"
         :validate="() => fpNewPasswordConfirm && fpNewPasswordConfirm == fpNewPassword"
         ref="fpNewPasswordConfirm"
+        autocomplete="new-password"
       ></FormGroup>
 
       <div class="d-flex justify-content-between">

@@ -61,6 +61,7 @@
             @enter="forgotPasswordConfirm"
             ref="newPassword"
             minlength="8"
+            autocomplete="new-password"
           ></FormGroup>
 
           <FormGroup
@@ -71,6 +72,7 @@
             @enter="forgotPasswordConfirm"
             :validate="() => newPasswordConfirm && newPasswordConfirm == newPassword"
             ref="newPasswordConfirm"
+            autocomplete="new-password"
           ></FormGroup>
 
           <div class="d-flex justify-content-between">

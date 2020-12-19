@@ -16,6 +16,7 @@
         :value="value"
         :disabled="disabledFinal"
         :maxlength="maxlength"
+        :autocomplete="autocomplete"
         @input="emitInput"
         @keyup="emitKeyup"
         @blur="emitBlur"
@@ -71,6 +72,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    autocomplete: {
+      type: String,
+      default: null
     }
   },
   computed: {
