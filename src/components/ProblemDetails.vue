@@ -7,11 +7,24 @@
 
       <hr>
       
-      {{ 
-        loadingInProgress
-        ? 'Loading...'
-        : problem.text
-      }}
+      <template v-if="loadingInProgress">
+        Loading...
+      </template>
+
+      <template v-else>
+        <span
+          v-if="problem.html"
+          v-html="problem.html"
+          class="html"
+        ></span>
+
+        <span
+          v-else
+          class="text"
+        >
+          {{ problem.text }}
+        </span>
+      </template>
     </div>
   </div>
 </template>
