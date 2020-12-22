@@ -11,7 +11,7 @@
           :class="categoryClass"
           v-if="problem.category"
         >
-          {{ problem.category }}
+          {{ problem.category.toLowerCase() }}
         </div>
       </div>
 
