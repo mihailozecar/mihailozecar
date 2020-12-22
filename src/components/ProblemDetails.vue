@@ -1,8 +1,18 @@
 <template>
   <div class="problem-details">
     <div class="problem-text">
-      <div class="font-weight-bold">
-        Problem #{{ problem.problem }}
+      <div class="d-flex justify-content-between">
+        <div class="font-weight-bold">
+          Problem #{{ problem.problem }}
+        </div>
+
+        <div 
+          class="category"
+          :class="categoryClass"
+          v-if="problem.category"
+        >
+          {{ problem.category }}
+        </div>
       </div>
 
       <hr>
@@ -36,6 +46,15 @@ export default {
     problemKey: {
       type: [String, Number],
       required: true
+    }
+  },
+  computed: {
+    categoryClass() {
+      if (!this.problem.category) {
+        return '';
+      }
+
+      return `category-${(this.problem.category).toLowerCase()}`;
     }
   },
   data() {

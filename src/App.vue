@@ -241,4 +241,30 @@ export default {
       color: #5b7dff;
     }
   }
+
+  .category {
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: var(--default-box-shadow);
+  }
+
+  .category.category-easy {
+    background: var(--light-green-accent-color);
+  }
+
+  .category.category-medium {
+    background: #ffe082;
+  }
+
+  .category.category-hard {
+    background: #f55060;
+    color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .category {
+      color: black !important;
+    }
+  }
 </style>

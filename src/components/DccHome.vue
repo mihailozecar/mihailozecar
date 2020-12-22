@@ -344,26 +344,6 @@ export default {
     box-shadow: var(--default-box-shadow-hover);
   }
 
-  .category {
-    padding: 3px 6px;
-    border-radius: 5px;
-    background: white;
-    box-shadow: var(--default-box-shadow);
-  }
-
-  .category.category-easy {
-    background: var(--light-green-accent-color);
-  }
-
-  .category.category-medium {
-    background: #ffe082;
-  }
-
-  .category.category-hard {
-    background: #f55060;
-    color: white;
-  }
-
   .m-1-em {
     margin: 1em;
   }
@@ -380,12 +360,6 @@ export default {
 
     .mobile-margin-top {
       margin-top: .5rem;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .category {
-      color: black !important;
     }
   }
 </style>
