@@ -28,10 +28,6 @@
           </Button>
         </div>
 
-        <div class="ml-2">
-          Problems: {{ problemListFilteredSorted.length }}
-        </div>
-
         <div 
           class="ml-2 gaps mobile-margin-top"
           v-if="gaps.length > 0"
