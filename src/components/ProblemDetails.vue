@@ -99,6 +99,10 @@ export default {
 </script>
 
 <style scoped>
+  .problem-details {
+    padding-bottom: 2em;
+  }
+
   .problem-text {
     padding: 1em;
     border-radius: 5px;

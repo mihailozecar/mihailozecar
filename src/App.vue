@@ -212,7 +212,7 @@ export default {
   }
 
   .loading-message {
-    color: #ffe082;
+    color: #ff5722;
   }
 
   .success-message {
@@ -265,6 +265,10 @@ export default {
   @media (prefers-color-scheme: dark) {
     .category {
       color: black !important;
+    }
+
+    .loading-message {
+      color: #ffe082;
     }
   }
 </style>
