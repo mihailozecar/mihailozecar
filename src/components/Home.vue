@@ -116,7 +116,7 @@
       <strong>Faculty of Technical Sciences (Singidunum University), Belgrade (Serbia)</strong> - <i class="text-muted">Software and Data Engineer BC</i>
       <br>
       <span class="text-muted">
-        October 2016 - October 2020 (expected)
+        October 2016 - June 2021 (expected)
       </span>
     </div>
   </div>
