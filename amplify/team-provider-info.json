@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "mihailozecarcomf09934a2": {}
+      },
+      "function": {
+        "dailycodingchallengeWebAPIFunction": {
+          "deploymentBucketName": "amplify-mihailozecarcom-prod-173619-deployment",
+          "s3Key": "amplify-builds/dailycodingchallengeWebAPIFunction-4869385854694a565631-build.zip"
+        }
       }
     }
   }
