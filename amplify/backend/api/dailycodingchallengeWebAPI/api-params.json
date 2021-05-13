@@ -2,7 +2,7 @@
   "paths": [
     {
       "name": "/api",
-      "lambdaFunction": "dailycodingchallengeWebAPIFunction",
+      "lambdaFunction": "dailycodingchallengeWebAPIfunction",
       "privacy": {
         "private": true,
         "auth": [
@@ -20,19 +20,19 @@
   "apiName": "dailycodingchallengeWebAPI",
   "functionArns": [
     {
-      "lambdaFunction": "dailycodingchallengeWebAPIFunction"
+      "lambdaFunction": "dailycodingchallengeWebAPIfunction"
     }
   ],
   "privacy": {
     "auth": 1,
     "unauth": 0,
-    "authRoleName": "amplify-mihailozecarcom-prod-153610-authRole",
-    "unAuthRoleName": "amplify-mihailozecarcom-prod-153610-unauthRole"
+    "authRoleName": "amplify-mihailozecarcom-prod-165410-authRole",
+    "unAuthRoleName": "amplify-mihailozecarcom-prod-165410-unauthRole"
   },
   "dependsOn": [
     {
       "category": "function",
-      "resourceName": "dailycodingchallengeWebAPIFunction",
+      "resourceName": "dailycodingchallengeWebAPIfunction",
       "attributes": [
         "Name",
         "Arn"

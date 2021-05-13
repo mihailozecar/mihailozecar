@@ -1,17 +1,17 @@
 {
-  "function": {
-    "dailycodingchallengeWebAPIFunction": {
-      "build": true,
+  "auth": {
+    "mihailozecarcom0fbbeb1f": {
+      "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "dependsOn": [],
+      "customAuth": false
     }
   },
-  "auth": {
-    "cognito4cbf2f47": {
-      "service": "Cognito",
-      "serviceType": "managed",
-      "providerPlugin": "awscloudformation"
+  "function": {
+    "dailycodingchallengeWebAPIfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -21,7 +21,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "dailycodingchallengeWebAPIFunction",
+          "resourceName": "dailycodingchallengeWebAPIfunction",
           "attributes": [
             "Name",
             "Arn"

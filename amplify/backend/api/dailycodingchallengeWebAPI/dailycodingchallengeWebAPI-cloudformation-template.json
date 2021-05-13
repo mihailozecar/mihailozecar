@@ -8,15 +8,15 @@
         },
     
     
-          "functiondailycodingchallengeWebAPIFunctionName": {
+          "functiondailycodingchallengeWebAPIfunctionName": {
             "Type": "String",
-            "Default": "functiondailycodingchallengeWebAPIFunctionName"
+            "Default": "functiondailycodingchallengeWebAPIfunctionName"
           },
 
           
-          "functiondailycodingchallengeWebAPIFunctionArn": {
+          "functiondailycodingchallengeWebAPIfunctionArn": {
             "Type": "String",
-            "Default": "functiondailycodingchallengeWebAPIFunctionArn"
+            "Default": "functiondailycodingchallengeWebAPIfunctionArn"
           }
 
           
@@ -174,7 +174,7 @@
                             
                             {
 
-                                "Ref": "functiondailycodingchallengeWebAPIFunctionArn"
+                                "Ref": "functiondailycodingchallengeWebAPIfunctionArn"
                             },
                             
                             "/invocations"
@@ -279,7 +279,7 @@
                           
                           {
 
-                            "Ref": "functiondailycodingchallengeWebAPIFunctionArn"
+                            "Ref": "functiondailycodingchallengeWebAPIfunctionArn"
                           },
                           
                           "/invocations"
@@ -336,12 +336,12 @@
       
         
 
-        "functiondailycodingchallengeWebAPIFunctionPermissiondailycodingchallengeWebAPI": {
+        "functiondailycodingchallengeWebAPIfunctionPermissiondailycodingchallengeWebAPI": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functiondailycodingchallengeWebAPIFunctionName"
+                        "Ref":  "functiondailycodingchallengeWebAPIfunctionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",

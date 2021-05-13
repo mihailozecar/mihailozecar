@@ -3,15 +3,15 @@
 
 const awsmobile = {
     "aws_project_region": "eu-west-1",
-    "aws_cognito_identity_pool_id": "eu-west-1:fef7404d-6da9-49ff-b63a-2851939d7683",
+    "aws_cognito_identity_pool_id": "eu-west-1:cb596eac-916b-4dd9-8845-8b2cb4c74216",
     "aws_cognito_region": "eu-west-1",
-    "aws_user_pools_id": "eu-west-1_J1bGCbimz",
-    "aws_user_pools_web_client_id": "34qcf7gq82onedvg6cpqr2l1b7",
+    "aws_user_pools_id": "eu-west-1_0HhAD8HiD",
+    "aws_user_pools_web_client_id": "44tec6aiu3khib8crr91dov8mr",
     "oauth": {},
     "aws_cloud_logic_custom": [
         {
             "name": "dailycodingchallengeWebAPI",
-            "endpoint": "https://02hsjkbw98.execute-api.eu-west-1.amazonaws.com/prod",
+            "endpoint": "https://bg90zfv268.execute-api.eu-west-1.amazonaws.com/prod",
             "region": "eu-west-1"
         }
     ]

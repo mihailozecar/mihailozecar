@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "dailycodingchallengeWebAPIFunction",
+            "dailycodingchallengeWebAPIfunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "dailycodingchallengeWebAPIFunction",
+                  "dailycodingchallengeWebAPIfunction",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mihailozecarcomLambdaRoled32deb07",
+            "mihailozecarcomLambdaRole30e59d2a",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mihailozecarcomLambdaRoled32deb07",
+                  "mihailozecarcomLambdaRole30e59d2a",
                   "-",
                   {
                     "Ref": "env"

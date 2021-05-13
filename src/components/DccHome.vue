@@ -6,6 +6,13 @@
       >
         Loading...
       </h3>
+
+      <h3 
+        v-else-if="errorLoading"
+      >
+        An error occured. Please, try again later
+      </h3>
+
       <div
         class="d-flex align-items-center flex-wrap"
         v-else
@@ -134,6 +141,7 @@ export default {
   data() {
     return {
       loadingInProgress: false,
+      errorLoading: false,
       problemList: [],
       search: null,
       pageSize: 50,
@@ -270,10 +278,10 @@ export default {
       params['action'] = 'list';
 
       this.loadingInProgress = true;
+      this.errorLoading = false;
       
       try {
         const result = await this.$api.$post(params, { API: 'DCC_API', path: '/api' });
-        this.loadingInProgress = false;
 
         let processedProblems = [];
 
@@ -290,6 +298,8 @@ export default {
 
       } catch (error) {
         console.error(error);
+        this.errorLoading = true;
+      } finally {
         this.loadingInProgress = false;
       }
     },
