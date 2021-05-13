@@ -332,7 +332,6 @@ export default {
 
       try {
         const user = await signIn(this.username, this.password);
-        console.log(user);
         this.loadingInProgress = false;
       } catch (error) {
         console.error(error);
