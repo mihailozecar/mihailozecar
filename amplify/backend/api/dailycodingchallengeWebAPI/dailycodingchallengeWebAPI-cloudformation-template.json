@@ -371,7 +371,7 @@
         
         
 
-      "DeploymentAPIGWdailycodingchallengeWebAPI": {
+      "DeploymentAPIGWdailycodingchallengeWebAPI01817161": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",

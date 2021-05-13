@@ -1,42 +1,43 @@
 {
-  "paths": [
-    {
-      "name": "/api",
-      "lambdaFunction": "dailycodingchallengeWebAPIfunction",
-      "privacy": {
-        "private": true,
-        "auth": [
-          "/POST",
-          "/GET",
-          "/PUT",
-          "/PATCH",
-          "/DELETE"
-        ]
-      },
-      "policyResourceName": "/api"
-    }
-  ],
-  "resourceName": "dailycodingchallengeWebAPI",
-  "apiName": "dailycodingchallengeWebAPI",
-  "functionArns": [
-    {
-      "lambdaFunction": "dailycodingchallengeWebAPIfunction"
-    }
-  ],
-  "privacy": {
-    "auth": 1,
-    "unauth": 0,
-    "authRoleName": "amplify-mihailozecarcom-prod-165410-authRole",
-    "unAuthRoleName": "amplify-mihailozecarcom-prod-165410-unauthRole"
-  },
-  "dependsOn": [
-    {
-      "category": "function",
-      "resourceName": "dailycodingchallengeWebAPIfunction",
-      "attributes": [
-        "Name",
-        "Arn"
-      ]
-    }
-  ]
+    "paths": [
+        {
+            "name": "/api",
+            "lambdaFunction": "dailycodingchallengeWebAPIfunction",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/api"
+        }
+    ],
+    "resourceName": "dailycodingchallengeWebAPI",
+    "apiName": "dailycodingchallengeWebAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "dailycodingchallengeWebAPIfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-mihailozecarcom-prod-165410-authRole",
+        "unAuthRoleName": "amplify-mihailozecarcom-prod-165410-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "dailycodingchallengeWebAPIfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "01817161"
 }
