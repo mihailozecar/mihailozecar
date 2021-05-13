@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "mihailozecar_identitypool_56399031",
+    "identityPoolName": "mihailozecarcom_identitypool_dd9f6450",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mihail56399031",
-    "userPoolName": "mihailozecar_userpool_56399031",
+    "resourceNameTruncated": "mihaildd9f6450",
+    "userPoolName": "mihailozecarcom_userpool_dd9f6450",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "mihail56399031_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "mihaildd9f6450_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "authSelections": "identityPoolAndUserPool",
-    "resourceName": "cognitod1859fec",
+    "resourceName": "cognito4cbf2f47",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",

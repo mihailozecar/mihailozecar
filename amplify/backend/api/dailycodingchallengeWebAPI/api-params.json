@@ -26,8 +26,8 @@
   "privacy": {
     "auth": 1,
     "unauth": 0,
-    "authRoleName": "amplify-mihailozecar-prod-114149-authRole",
-    "unAuthRoleName": "amplify-mihailozecar-prod-114149-unauthRole"
+    "authRoleName": "amplify-mihailozecarcom-prod-153610-authRole",
+    "unAuthRoleName": "amplify-mihailozecarcom-prod-153610-unauthRole"
   },
   "dependsOn": [
     {
