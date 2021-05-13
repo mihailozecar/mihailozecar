@@ -1,0 +1,26 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mihailozecar-prod-114149-authRole",
+      "UnauthRoleArn": "arn:aws:iam::946067764131:role/amplify-mihailozecar-prod-114149-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::946067764131:role/amplify-mihailozecar-prod-114149-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-mihailozecar-prod-114149-deployment",
+      "UnauthRoleName": "amplify-mihailozecar-prod-114149-unauthRole",
+      "StackName": "amplify-mihailozecar-prod-114149",
+      "StackId": "arn:aws:cloudformation:eu-west-1:946067764131:stack/amplify-mihailozecar-prod-114149/72666f10-b3cf-11eb-96bd-0a41c30d6b83",
+      "AmplifyAppId": "d2s68ahii33g"
+    },
+    "categories": {
+      "auth": {
+        "cognitod1859fec": {}
+      },
+      "function": {
+        "dailycodingchallengeWebAPIFunction": {
+          "deploymentBucketName": "amplify-mihailozecar-prod-114149-deployment",
+          "s3Key": "amplify-builds/dailycodingchallengeWebAPIFunction-2b4d3553544963534c73-build.zip"
+        }
+      }
+    }
+  }
+}
