@@ -331,7 +331,7 @@ export default {
       this.errorMessage = null;
 
       try {
-        const user = await signIn(this.username, this.password);
+        await signIn(this.username, this.password);
         this.loadingInProgress = false;
       } catch (error) {
         console.error(error);
