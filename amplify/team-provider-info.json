@@ -10,6 +10,11 @@
       "StackName": "amplify-mihailozecarcom-prod-173619",
       "StackId": "arn:aws:cloudformation:eu-west-1:946067764131:stack/amplify-mihailozecarcom-prod-173619/f8ddd7a0-b400-11eb-9dd8-06d7b0d0304d",
       "AmplifyAppId": "d2n7gnhw4l3bj3"
+    },
+    "categories": {
+      "auth": {
+        "mihailozecarcomf09934a2": {}
+      }
     }
   }
 }

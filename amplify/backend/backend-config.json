@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "mihailozecarcomf09934a2": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
