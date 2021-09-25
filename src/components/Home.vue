@@ -113,10 +113,10 @@
     </h4>
 
     <div>
-      <strong>Faculty of Technical Sciences (Singidunum University), Belgrade (Serbia)</strong> - <i class="text-muted">Software and Data Engineer BC</i>
+      <strong>Faculty of Informatics and Computing (Singidunum University), Belgrade (Serbia)</strong> - <i class="text-muted">BS Computer Science</i>
       <br>
       <span class="text-muted">
-        October 2016 - June 2021 (expected)
+        October 2016 - September 2021
       </span>
     </div>
   </div>
