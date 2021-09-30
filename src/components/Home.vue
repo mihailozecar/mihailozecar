@@ -10,7 +10,7 @@
 
     <div class="text-center mz-image-container mobile-only">
       <img 
-        src="mz-resized.jpg"
+        src="mz-resized.jpg?v=123"
         class="mz-image"
         alt="Mihailo Zecar image"
       >
