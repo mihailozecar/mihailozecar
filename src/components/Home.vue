@@ -25,7 +25,7 @@
     <p>
       Experienced Full Stack Web Developer with a demonstrated history of 
       working in the computer software industry. Very passionate about crafting 
-      the best Web experience for customers, with attention to most peculiar 
+      the best Web experience for customers, with attention to the most peculiar 
       details. Strong communication skills paired with a team oriented workflow. 
       Always ready to learn more.
     </p>
