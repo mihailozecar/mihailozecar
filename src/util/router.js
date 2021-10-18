@@ -6,7 +6,10 @@ import { EventBus } from '@/util/event-bus.js'
 Vue.use(VueRouter)
 
 import routes from '@/util/routes.js'
-const router = new VueRouter({ routes })
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 
 const AuthStateMap = {
   'signin': 'dcc',
