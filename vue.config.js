@@ -1,8 +1,5 @@
-module.exports = {
-  productionSourceMap: false,
-  devServer: {
-    watchOptions: {
-      ignored: /node_modules/
-    }
-  }
-}
+const { defineConfig } = require('@vue/cli-service')
+
+module.exports = defineConfig({
+  transpileDependencies: false
+})

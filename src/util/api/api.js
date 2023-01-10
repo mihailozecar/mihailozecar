@@ -25,6 +25,6 @@ async function $post(params = {}, config = {}) {
   return result;
 }
 
-export default {
+export {
   $post
 }

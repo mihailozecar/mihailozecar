@@ -1,18 +1,17 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from '@/util/router.js'
+import { router } from '@/util/router.js'
+import api from '@/util/api'
 
-import Amplify from 'aws-amplify'
+import { Amplify } from 'aws-amplify'
 import awsExports from '@/aws-exports.js'
 
 Amplify.configure(awsExports)
 
-import $api from '@/util/api'
-Vue.use($api)
+const app = createApp(App);
 
-Vue.config.productionTip = false
+app.use(router)
+app.use(api)
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
+app.mount('#app')
+

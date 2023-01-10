@@ -13,7 +13,7 @@
         class="form-group-input"
         ref="input"
         :type="type"
-        :value="value"
+        :value="modelValue"
         :disabled="disabledFinal"
         :maxlength="maxlength"
         :autocomplete="autocomplete"
@@ -28,8 +28,9 @@
 <script>
 export default {
   name: 'FormGroup',
+  emits: ['update:modelValue', 'keyup', 'blur', 'enter'],
   props: {
-    value: {
+    modelValue: {
       type: String,
       default: null
     },
@@ -113,7 +114,7 @@ export default {
   },
   methods: {
     async emitInput(e) {
-      this.$emit('input', e.target.value);
+      this.$emit('update:modelValue', e.target.value);
       
       if (this.eager) {
         await this.$nextTick();
@@ -151,9 +152,9 @@ export default {
       if (this.validate != null) {
         this.valid = await this.validate();
       } else if (this.required) {
-        this.valid = typeof this.value == 'string' && this.value.trim() != '';
+        this.valid = typeof this.modelValue == 'string' && this.modelValue.trim() != '';
       } else if (this.minlength != 0) {
-        this.valid = typeof this.value == 'string' && this.value.trim().length >= parseInt(this.minlength);
+        this.valid = typeof this.modelValue == 'string' && this.modelValue.trim().length >= parseInt(this.minlength);
       }
 
       return this.valid;

@@ -1,13 +1,11 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { getUser } from '@/util/auth.js'
-import { EventBus } from '@/util/event-bus.js'
+import EventBus from '@/util/event-bus.js'
 
-Vue.use(VueRouter)
+import { routes } from '@/util/routes.js'
 
-import routes from '@/util/routes.js'
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes
 })
 
@@ -41,4 +39,6 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export default router
+export {
+  router
+}

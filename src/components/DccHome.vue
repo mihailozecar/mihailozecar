@@ -123,7 +123,7 @@
         Back
       </Button>
 
-      <router-view></router-view>
+      <RouterView></RouterView>
     </template>
   </div>
 </template>
@@ -131,12 +131,14 @@
 <script>
 import Button from '@/components/Button.vue'
 import FormGroup from '@/components/FormGroup.vue'
+import { RouterView } from 'vue-router'
 
 export default {
   name: 'DccHome',
   components: {
     Button,
-    FormGroup
+    FormGroup,
+    RouterView
   },
   data() {
     return {

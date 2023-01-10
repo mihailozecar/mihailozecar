@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 'Button',
+  emits: ['click'],
   props: {
     disabled: {
       type: Boolean,

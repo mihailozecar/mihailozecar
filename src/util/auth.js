@@ -1,5 +1,5 @@
 import { Auth } from 'aws-amplify'
-import { EventBus } from '@/util/event-bus.js'
+import EventBus from '@/util/event-bus.js'
 
 async function getUser() {
   let currentUser = null;

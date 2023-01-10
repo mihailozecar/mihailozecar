@@ -1,11 +1,9 @@
-import api from './api.js'
+import * as api from './api.js'
 
-export default {
-  install(Vue) {
-    Object.defineProperty(Vue.prototype, '$api', {
-      get() { return api }
-    });
-  }
+const install = app => {
+  app.config.globalProperties.$api = api;
 }
 
-export const $api = { ...api }
+export default { install }
+
+export const $api = { api }

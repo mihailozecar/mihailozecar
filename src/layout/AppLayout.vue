@@ -30,12 +30,13 @@
         </Button>
       </div>
     </div>
-    <router-view></router-view>
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script>
 import Button from '@/components/Button.vue'
+import { RouterView } from 'vue-router'
 
 import {
   signOut,
@@ -47,7 +48,8 @@ import { homepage } from '@/util/routes.js'
 export default {
   name: 'AppLayout',
   components: {
-    Button
+    Button,
+    RouterView
   },
   mounted() {
     this.getUser();

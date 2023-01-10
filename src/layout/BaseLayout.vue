@@ -1,7 +1,7 @@
 <template>
   <div class="base-layout container-fluid">
     <div class="content">
-      <router-view></router-view>
+      <RouterView></RouterView>
     </div>
 
     <div class="sidebar p-2">
@@ -75,8 +75,13 @@
 </template>
 
 <script>
+import { RouterView } from 'vue-router'
+
 export default {
-  name: 'BaseLayout'
+  name: 'BaseLayout',
+  components: {
+    RouterView
+  }
 }
 </script>
 
