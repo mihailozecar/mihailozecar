@@ -8,7 +8,7 @@ import awsExports from '@/aws-exports.js'
 
 Amplify.configure(awsExports)
 
-const app = createApp(App);
+const app = createApp(App)
 
 app.use(router)
 app.use(api)
