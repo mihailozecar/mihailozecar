@@ -63,7 +63,7 @@
       <div class="social-link">
         <i class="fab fa-twitter"></i>
         <a 
-          href="https://twitter.com/mihailozecar"
+          href="https://x.com/mihailozecar"
           target="_blank"
           rel="noopener"
         >
